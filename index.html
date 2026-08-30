@@ -1847,6 +1847,11 @@ async function publishOrder(
   razorpayOrderId
 ){
 
+  const pageUrl =
+  window.location.origin +
+  "/p/?id=" +
+  razorpayOrderId;
+  
 const {
 error
 } =
