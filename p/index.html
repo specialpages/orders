@@ -37,9 +37,9 @@ const SUPABASE_KEY="sb_publishable_oGZ6x_40l70-4TV53FIq1A_mq2uvPCb";
 const supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
 
 function getOrderId(){
-  const parts=window.location.pathname.split("/").filter(Boolean);
-  const pIndex=parts.indexOf("p");
-  return pIndex!==-1&&parts[pIndex+1]?parts[pIndex+1]:null;
+  const params = new URLSearchParams(window.location.search);
+  return params.get("id");
+}
 }
 
 async function loadPage(){
