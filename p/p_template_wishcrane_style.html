@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>For You ♡</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500&family=Playfair+Display:ital,wght@0,500;1,500;1,600&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f7eee6;color:#4b1d28;font-family:"DM Sans",sans-serif}
+section{min-height:100svh;position:relative;display:flex;align-items:center;justify-content:center;padding:80px 20px;overflow:hidden}
+.wrap{width:min(900px,100%);margin:auto}.center{text-align:center}.k{font-size:.64rem;letter-spacing:.28em;text-transform:uppercase;color:#8a5b63}
+h1,h2,h3{font-family:"Playfair Display",serif;font-weight:500}h1{font-size:clamp(3.2rem,12vw,6.5rem);line-height:.98;margin:16px 0}h2{font-size:clamp(2.3rem,8vw,4.8rem);font-style:italic;line-height:1.05;margin:14px 0}p{line-height:1.85;color:#795f64}
+#intro{background:linear-gradient(180deg,#fbf2e8,#f3e4d5)}#intro:before{content:"";position:absolute;inset:0;opacity:.5;background-image:radial-gradient(#d99aaa 2px,transparent 2px),radial-gradient(#d5ad72 2px,transparent 2px);background-size:80px 80px,120px 120px;background-position:10px 20px,40px 55px}.bow{font-size:3.5rem;position:relative}.intro-content{position:relative;z-index:1}.name{color:#a51d35;font-style:italic}.heart{color:#c22d45}
+#gate{background:radial-gradient(circle at 25% 10%,#bd2d49,#9d1533 48%,#5d0b1d);color:#fff}.roses{position:absolute;font-size:4rem;opacity:.5}.tl{top:20px;left:12px}.br{right:15px;bottom:15px}.gate-grid{display:grid;grid-template-columns:1fr 1fr;gap:55px;align-items:center}.polaroid{position:relative;background:#fff;padding:13px 13px 47px;width:min(330px,90%);margin:auto;transform:rotate(-3deg);box-shadow:0 30px 70px #0007}.polaroid img{display:block;width:100%;height:390px;object-fit:cover;background:#eee}.caption{position:absolute;bottom:13px;left:0;right:0;text-align:center;font-family:"Playfair Display",serif;font-style:italic;color:#4b1d28}.gate-panel{text-align:center}.lock{width:58px;height:58px;border-radius:50%;background:#ffffff1f;display:grid;place-items:center;margin:0 auto 15px;font-size:25px}.gate-title{font-family:"Playfair Display",serif;font-style:italic;font-size:clamp(1.6rem,5vw,2.3rem)}.dots{display:flex;justify-content:center;gap:11px;margin:18px 0}.dots i{width:10px;height:10px;border-radius:50%;border:1px solid #fff8;display:block}.dots i.on{background:#fff}.hint{font-size:.6rem;letter-spacing:.18em;color:#fff9;text-transform:uppercase;margin-bottom:22px}.pad{display:grid;grid-template-columns:repeat(3,60px);gap:12px;justify-content:center}.key{width:60px;height:60px;border-radius:50%;border:1px solid #ffffff30;background:#ffffff12;color:#fff;font-size:1.15rem}.error{height:18px;margin-top:13px;font-size:.72rem;color:#ffc2cc;opacity:0}.error.show{opacity:1}
+#gated{display:none;background:#08070b;color:#fff}.dark{background:#08070b;color:#fff}.letter{background:linear-gradient(145deg,#ffffff09,#ffffff04);border:1px solid #ffffff15;border-radius:28px;padding:30px;box-shadow:0 30px 90px #0008}.letter p{font-family:"Playfair Display",serif;color:#f5e9ef;font-size:clamp(1.1rem,3.2vw,1.45rem)}.letter .opening{color:#ffd8e4;font-style:italic}.memory-section{min-height:90svh}.memory-frame{width:min(700px,100%);padding:9px 9px 14px;background:#f6edf0;box-shadow:0 30px 80px #0009;transform:rotate(-1deg)}.memory-frame img{display:block;width:100%;max-height:78svh;object-fit:contain;background:#111}.memory-caption{text-align:center;margin-top:18px}.memory-caption small{letter-spacing:.2em;color:#8d7c85}.memory-caption h3{font-style:italic;font-size:1.7rem;margin:7px 0}.reasons{display:grid;gap:14px;max-width:700px;margin:30px auto}.reason{padding:20px 22px;border-left:1px solid #ff8fb1;background:#ffffff06;border-radius:0 17px 17px 0;font-family:"Playfair Display",serif;font-style:italic;font-size:1.2rem}.reason:nth-child(even){margin-left:8%}
+.song{border:1px solid #ffffff16;border-radius:20px;padding:18px;text-align:center;background:#ffffff05}.song a{color:#ffd8e4;text-decoration:none}.final{background:radial-gradient(circle at 50% 35%,#3c1c29,#08070b 65%);text-align:center}.final-name{font-size:clamp(3.5rem,15vw,7rem);font-style:italic}.final-note{max-width:650px;margin:25px auto;color:#bbaab2}.hidden{display:none!important}
+@media(max-width:700px){.gate-grid{grid-template-columns:1fr;gap:30px}.polaroid img{height:320px}.pad{grid-template-columns:repeat(3,55px)}.key{width:55px;height:55px}.letter{padding:23px}.memory-section{min-height:80svh}}
+</style>
+</head>
+<body>
+<section id="intro"><div class="intro-content center"><div class="bow">🎀</div><div class="k">the best day of the year</div><h1>Happy<br><span class="name">Birthday</span></h1><h2 class="name" id="introName">Someone special <span class="heart">♥</span></h2><p>Another year of you — and somehow you keep getting more wonderful.</p><div style="margin-top:50px;font-style:italic;color:#8a6a70">your surprises await ↓</div></div></section>
+
+<section id="gate"><div class="roses tl">🌹🌹</div><div class="roses br">🌹</div><div class="wrap gate-grid"><div class="polaroid"><img id="gatePhoto" alt="Memory"><div class="caption" id="gateCaption">Someone special ♥</div></div><div class="gate-panel" id="gatePanel"><div class="lock">🔒</div><div style="font-size:.85rem;color:#fff9;font-style:italic">something special is waiting</div><div class="gate-title">Enter our secret code</div><div class="dots" id="dots"><i></i><i></i><i></i><i></i></div><div class="hint" id="hint">HINT · THEIR BIRTHDAY · DD MM</div><div class="pad"><button class="key" data-k="1">1</button><button class="key" data-k="2">2</button><button class="key" data-k="3">3</button><button class="key" data-k="4">4</button><button class="key" data-k="5">5</button><button class="key" data-k="6">6</button><button class="key" data-k="7">7</button><button class="key" data-k="8">8</button><button class="key" data-k="9">9</button><span></span><button class="key" data-k="0">0</button><button class="key" data-k="back">⌫</button></div><div class="error" id="error">Not quite — try again.</div></div></div></section>
+
+<main id="gated">
+<section class="dark"><div class="wrap"><div class="k center">a little letter</div><div class="letter"><p class="opening" id="opening">To my dearest,</p><div id="letterText"></div><p id="signoff" style="text-align:right;font-style:italic"></p></div></div></section>
+<section class="dark" id="songSection"><div class="wrap"><div class="k center">the song</div><h2 class="center">Press play when you're ready.</h2><div class="song" id="songBox"></div></div></section>
+<section class="dark"><div class="wrap"><div class="k center">the little things</div><h2 class="center">The reasons you mean so much.</h2><div class="reasons" id="reasons"></div></div></section>
+<section class="dark" id="memories"></section>
+<section class="final"><div class="wrap"><div class="k">for someone who still means more</div><div class="final-name" id="finalName">You</div><div class="heart">♥</div><p class="final-note" id="closingMessage">Happy Birthday. I hope this year is kind to you.</p><div class="k" id="closingTitle">Happy Birthday, my love</div></div></section>
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+(async function(){
+const SUPABASE_URL="https://omwcwpcymievkcwuurmi.supabase.co",KEY="sb_publishable_oGZ6x_40l70-4TV53FIq1A_mq2uvPCb",sb=window.supabase.createClient(SUPABASE_URL,KEY);
+const id=new URLSearchParams(location.search).get("id");let entered="",pin=null,order=null,special={};
+const $=x=>document.getElementById(x);
+function publicUrl(path){return SUPABASE_URL+"/storage/v1/object/public/customer-media/"+path.split("/").map(encodeURIComponent).join("/")}
+function renderDots(){document.querySelectorAll("#dots i").forEach((x,i)=>x.classList.toggle("on",i<entered.length))}
+function unlock(){document.querySelector("#gate").style.display="none";$("gated").style.display="block";window.scrollTo(0,0)}
+function setupPin(){if(!pin){unlock();return}document.querySelectorAll(".key").forEach(b=>b.onclick=()=>{let k=b.dataset.k;if(k==="back")entered=entered.slice(0,-1);else if(entered.length<4)entered+=k;renderDots();if(entered.length===4)setTimeout(()=>{if(entered===String(pin))unlock();else{$("error").classList.add("show");entered="";renderDots();setTimeout(()=>$("error").classList.remove("show"),700)}},120)})}
+function addMemory(path,i,caption){let s=document.createElement("section");s.className="dark memory-section";s.innerHTML=`<div class="wrap"><div class="memory-frame"><img src="${publicUrl(path)}" alt="Memory ${i+1}"></div><div class="memory-caption"><small>MEMORY ${String(i+1).padStart(2,"0")}</small><h3>${caption||"A moment worth keeping."}</h3></div></div>`;$("memories").appendChild(s)}
+if(!id){unlock();return}
+const q=await sb.from("orders").select("recipient_name,customer_name,occasion,occasion_date,message,admin_notes,special_request,payment_status").eq("id",id).maybeSingle();
+if(q.error||!q.data){$("introName").textContent="Someone special ♥";unlock();return}
+order=q.data;try{special=JSON.parse(order.special_request||"{}")}catch(e){special={}}let admin={};try{admin=JSON.parse(order.admin_notes||"{}")}catch(e){}
+pin=admin.pin||special.pin||null;
+const name=order.recipient_name||"Someone special", captions=special.captions||[];
+document.title="For "+name+" ♡";$("introName").innerHTML=name+' <span class="heart">♥</span>';$("gateCaption").textContent=name+" ♥";$("finalName").textContent=name;$("closingMessage").textContent=special.closing?.message||"Happy Birthday. I hope this year is kind to you.";$("closingTitle").textContent=special.closing?.title||"Happy Birthday, my love";$("hint").textContent=special.hint?special.hint:"HINT · THEIR BIRTHDAY · DD MM";
+const paths=admin.photos||special.photos||[];
+if(paths[0])$("gatePhoto").src=publicUrl(paths[0]);else $("gatePhoto").style.display="none";
+$("opening").textContent=special.letter?.opening||"To my dearest,";
+const paras=special.letter?.paragraphs||[];$("letterText").innerHTML=paras.map(x=>`<p>${x}</p>`).join("");
+$("signoff").textContent=special.letter?.signoff||"Always, yours";
+const rs=special.reasons||[];$("reasons").innerHTML=rs.map(x=>`<div class="reason">${x}</div>`).join("");
+if(!rs.length)$("reasons").innerHTML='<div class="reason">Every little thing that makes you, you.</div>';
+const spotify=special.spotify;if(spotify)$("songBox").innerHTML=`<a href="${spotify}" target="_blank" rel="noopener">♫ Open the song on Spotify →</a>`;else $("songSection").classList.add("hidden");
+paths.forEach((p,i)=>addMemory(p,i,captions[i]));
+setupPin();
+})();
+</script>
+</body></html>
