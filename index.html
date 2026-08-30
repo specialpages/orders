@@ -1843,15 +1843,9 @@ return data;
 ========================= */
 
 async function publishOrder(
-orderId,
-slug
+  orderId,
+  razorpayOrderId
 ){
-
-const pageUrl =
-window.location.origin +
-"/p/" +
-slug;
-
 
 const {
 error
@@ -2288,15 +2282,10 @@ throw new Error(
 status.textContent =
 "Creating your website…";
 
-
-const slug =
-makeSlug();
-
-
 const pageUrl =
   await publishOrder(
     orderId,
-    slug
+   razorpayOrderId
   );
 
 /* SUCCESS */
