@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SpecialPages — Make something they'll remember</title>
+<style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#fff;color:#171512;font-family:Arial,sans-serif}
+button,input,textarea,select{font:inherit}button{cursor:pointer}
+header{height:78px;border-bottom:1px solid #eee;display:flex;align-items:center;justify-content:space-between;padding:0 5.5%;position:sticky;top:0;background:#fff;z-index:20}
+.logo{font-weight:700;font-size:20px;letter-spacing:-.04em}.logo:before{content:"◆";font-size:13px;margin-right:9px}
+nav{display:flex;gap:34px;color:#5e5a55;font-size:14px}nav a{color:inherit;text-decoration:none}
+.topbtn,.blackbtn{background:#111;color:#fff;border:0;border-radius:999px;padding:16px 26px;font-weight:600}
+.hero{padding:78px 6% 70px;text-align:center}.hero h1{font-family:Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(48px,8vw,88px);line-height:.98;margin:20px 0 26px}.hero p{color:#777;max-width:620px;margin:0 auto 30px;line-height:1.7;font-size:15px}.hero-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}.outline{background:#fff;border:1px solid #ddd;border-radius:999px;padding:15px 24px}
+.section{padding:70px 5.5%}.wrap{max-width:1120px;margin:auto}.eyebrow{text-align:center;text-transform:uppercase;letter-spacing:.25em;color:#999;font-size:10px}.section h2{font-family:Georgia,serif;font-style:italic;font-weight:400;font-size:48px;text-align:center;margin:14px 0 38px}
+.templates{display:grid;grid-template-columns:1fr 1fr;gap:24px}.template{border:1px solid #eee;border-radius:28px;padding:10px;background:#fff;box-shadow:0 15px 50px #0000000b}.template.selected{box-shadow:0 0 0 2px #111,0 18px 55px #00000016}.preview{height:430px;border-radius:22px;position:relative;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;align-items:center;padding:35px;color:#fff}.rose{background:radial-gradient(circle at 20% 10%,#be4158,#8f102c 52%,#3c0715)}.aurora{background:radial-gradient(circle at 20% 20%,#37b5d0,#163f7c 52%,#0a1231)}.mini-polaroid{background:#fff;color:#48202a;width:180px;padding:9px 9px 34px;transform:rotate(-4deg);box-shadow:0 20px 35px #0005}.mini-polaroid .fakephoto{height:245px;background:linear-gradient(140deg,#7c9b65,#e6c29f 45%,#507c62);display:grid;place-items:center;font-size:45px}.mini-copy{text-align:center}.mini-copy small{display:block;opacity:.75;letter-spacing:.12em;text-transform:uppercase;font-size:9px}.mini-copy h3{font-family:Georgia,serif;font-style:italic;font-size:26px;font-weight:400;margin:14px 0}.code{font-family:Georgia,serif;font-style:italic;text-align:center}.code .lock{font-size:26px;margin-bottom:15px}.code h4{font-size:24px;font-weight:400;margin:0 0 18px}.dots{letter-spacing:9px;opacity:.55}.keys{display:grid;grid-template-columns:repeat(3,45px);gap:8px;justify-content:center;margin-top:15px}.keys span{width:45px;height:45px;border:1px solid #ffffff38;border-radius:50%;display:grid;place-items:center;background:#ffffff12}.template-info{padding:16px 8px 7px}.template-info strong{font-size:20px}.template-info p{margin:6px 0;color:#8b8680;font-size:12px}
+.builder{border:1px solid #eee;border-radius:28px;padding:28px;background:#fff}.steps{display:flex;gap:7px;margin-bottom:30px;flex-wrap:wrap}.step{border:1px solid #ddd;background:#fff;color:#777;border-radius:999px;padding:10px 16px;font-size:12px}.step.active{background:#111;color:#fff;border-color:#111}.step.done{color:#111}
+.stepview{display:none}.stepview.active{display:block}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px}.field{margin-bottom:20px}.field label{display:block;font-size:12px;font-weight:600;margin-bottom:8px}.field input,.field textarea,.field select{width:100%;border:1px solid #ddd;border-radius:13px;padding:15px;background:#fff;outline:none}.field textarea{min-height:120px;resize:vertical}.chips{display:flex;gap:8px;flex-wrap:wrap}.chip{border:1px solid #ddd;background:#fff;border-radius:999px;padding:11px 15px;color:#555}.chip.active{background:#111;color:#fff;border-color:#111}.photo-count{color:#999;font-size:12px;margin-bottom:10px}.photo-box{border:1px dashed #ccc;border-radius:18px;padding:28px;text-align:center;background:#fafafa}.photo-box input{width:100%}.caption-list{display:grid;gap:10px}.caption-row{display:grid;grid-template-columns:100px 1fr;gap:10px;align-items:center}.thumb{width:100px;height:80px;border-radius:10px;object-fit:cover;background:#eee}
+.navrow{display:flex;justify-content:space-between;gap:10px;margin-top:28px;padding-top:22px;border-top:1px solid #eee}.summary{margin-top:25px;border:1px solid #eee;border-radius:22px;padding:24px;background:#fafafa}.summary .price{font-family:Georgia,serif;font-style:italic;font-size:54px}.summary button{width:100%;margin-top:15px}.status{text-align:center;color:#777;font-size:12px;min-height:18px;margin-top:10px}
+footer{text-align:center;padding:50px;color:#999;font-size:12px;border-top:1px solid #eee}
+@media(max-width:760px){nav{display:none}.templates,.grid2{grid-template-columns:1fr}.preview{height:380px;padding:20px}.mini-polaroid{width:145px}.mini-polaroid .fakephoto{height:190px}.code h4{font-size:19px}.builder{padding:18px}.caption-row{grid-template-columns:75px 1fr}.thumb{width:75px;height:65px}}
+</style>
+</head>
+<body>
+<header><div class="logo">wish<span style="font-weight:400">crane</span></div><nav><a href="#templates">Templates</a><a href="#create">How it works</a><a href="#create">Pricing</a><a href="#create">Questions</a></nav><a class="topbtn" href="#templates" style="text-decoration:none">Make one now →</a></header>
+
+<section class="hero"><div class="wrap"><div class="eyebrow">digital surprises · made personal</div><h1>Make something<br>they'll remember.</h1><p>Create a private little website for someone special — with your photos, words, music and memories.</p><div class="hero-actions"><a class="blackbtn" href="#templates" style="text-decoration:none">Make their page →</a><a class="outline" href="#create" style="text-decoration:none">How it works</a></div></div></section>
+
+<section class="section" id="templates"><div class="wrap"><div class="eyebrow">choose your experience</div><h2>Pick a template.</h2><div class="templates">
+<button class="template selected" data-template="rosewood" type="button"><div class="preview rose"><div class="mini-polaroid"><div class="fakephoto">♡</div><div style="text-align:center;font-family:Georgia,serif;font-style:italic;padding-top:8px">Their name ♥</div></div><div class="code"><div class="lock">🔒</div><small>something special is waiting</small><h4>Enter our secret code</h4><div class="dots">● ● ● ●</div><div class="keys"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></div></div></div><div class="template-info"><strong>Rosewood</strong><p>Warm · romantic · birthday</p></div></button>
+<button class="template" data-template="aurora" type="button"><div class="preview aurora"><div class="mini-polaroid"><div class="fakephoto">✦</div><div style="text-align:center;font-family:Georgia,serif;font-style:italic;padding-top:8px">Their name ♥</div></div><div class="code"><div class="lock">🔒</div><small>the lights are waiting for you</small><h4>Enter our secret code</h4><div class="dots">● ● ● ●</div><div class="keys"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span></div></div></div><div class="template-info"><strong>Aurora</strong><p>Dreamy · glowing · birthday</p></div></button>
+</div></div></section>
+
+<section class="section" id="create"><div class="wrap"><div class="eyebrow">ready in about ten minutes</div><h2>Make their page.</h2>
+<div class="builder"><div class="steps"><button class="step active" data-step="1">1&nbsp; Names</button><button class="step" data-step="2">2&nbsp; Photos</button><button class="step" data-step="3">3&nbsp; Extras</button></div>
+
+<div class="stepview active" data-view="1">
+<div class="grid2">
+<div class="field"><label>Who is it for?</label><div class="chips" id="relation"><button class="chip active" data-value="My partner" type="button">My partner</button><button class="chip" data-value="My best friend" type="button">My best friend</button><button class="chip" data-value="My sibling" type="button">My sibling</button><button class="chip" data-value="My mum or dad" type="button">My mum or dad</button><button class="chip" data-value="Someone special" type="button">Someone special</button></div></div>
+<div></div>
+<div class="field"><label>Their name</label><input id="recipientName" maxlength="20" placeholder="Aanya"></div>
+<div class="field"><label>Your name</label><input id="customerName" maxlength="20" placeholder="Arjun"></div>
+<div class="field"><label>Secret code</label><input id="pin" inputmode="numeric" maxlength="4" placeholder="1808"></div>
+<div class="field"><label>Hint</label><input id="hint" maxlength="40" placeholder="her birthday · DD MM"></div>
+<div class="field"><label>Email (optional)</label><input id="email" type="email" placeholder="you@example.com"></div>
+<div class="field"><label>Birthday</label><input id="occasionDate" type="date"></div>
+</div>
+<div class="navrow"><span></span><button class="blackbtn next" type="button">Continue →</button></div>
+</div>
+
+<div class="stepview" data-view="2">
+<div class="photo-count"><b id="photoCount">0 of 12 added</b> · <span id="photoNeed">2 more to go</span></div>
+<div class="photo-box"><input id="photos" type="file" accept="image/jpeg,image/png,image/webp" multiple><p>JPEG, PNG or WebP · add 2–12 photos</p></div>
+<div id="photoPreview" class="caption-list" style="margin-top:18px"></div>
+<div class="navrow"><button class="outline back" type="button">← Back</button><button class="blackbtn next" type="button">Continue →</button></div>
+</div>
+
+<div class="stepview" data-view="3">
+<div class="field"><label>Photo captions</label><div id="captions" class="caption-list"></div></div>
+<div class="grid2">
+<div class="field"><label>Spotify link</label><input id="spotify" placeholder="https://open.spotify.com/track/..."></div>
+<div class="field"><label>Letter opening</label><input id="letterOpening" placeholder="To my dearest,"></div>
+</div>
+<div class="grid2">
+<div class="field"><label>Paragraph 1</label><textarea id="paragraph1" maxlength="600" placeholder="Happy birthday, my love..."></textarea></div>
+<div class="field"><label>Paragraph 2</label><textarea id="paragraph2" maxlength="600" placeholder="Thank you for every ordinary day..."></textarea></div>
+<div class="field"><label>Paragraph 3</label><textarea id="paragraph3" maxlength="600" placeholder="I hope this year hands you everything..."></textarea></div>
+<div class="field"><label>Sign off</label><input id="signoff" maxlength="32" placeholder="Always, yours"></div>
+</div>
+<div class="field"><label>Reasons you love them</label><div class="grid2" id="reasons"></div></div>
+<div class="grid2"><div class="field"><label>Closing title</label><input id="closingTitle" maxlength="40" placeholder="Happy Birthday, my love"></div><div class="field"><label>Closing message</label><textarea id="closingMessage" maxlength="200" placeholder="You are my favourite hello and my hardest goodbye."></textarea></div></div>
+<div class="summary"><div class="eyebrow">your private page</div><div class="price">₹159</div><div style="color:#888;font-size:12px">One-time payment · no subscription</div><button id="payButton" class="blackbtn" type="button">See my card and pay →</button><div id="paymentStatus" class="status"></div></div>
+<div class="navrow"><button class="outline back" type="button">← Back</button><span></span></div>
+</div>
+</div></div></section>
+<footer>wishcrane-style digital surprises · made personal.</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL="https://omwcwpcymievkcwuurmi.supabase.co";
+const SUPABASE_KEY="sb_publishable_oGZ6x_40l70-4TV53FIq1A_mq2uvPCb";
+const supabaseClient=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
+const RAZORPAY_KEY_ID="rzp_test_TVrx7zi04svLPv";
+let currentStep=1, selectedTemplate="rosewood", relation="My partner", photoFiles=[];
+
+document.querySelectorAll(".template").forEach(x=>x.onclick=()=>{document.querySelectorAll(".template").forEach(y=>y.classList.remove("selected"));x.classList.add("selected");selectedTemplate=x.dataset.template;});
+document.querySelectorAll("#relation .chip").forEach(x=>x.onclick=()=>{document.querySelectorAll("#relation .chip").forEach(y=>y.classList.remove("active"));x.classList.add("active");relation=x.dataset.value;});
+function showStep(n){currentStep=n;document.querySelectorAll(".step").forEach((x,i)=>x.classList.toggle("active",i+1===n));document.querySelectorAll(".stepview").forEach(x=>x.classList.toggle("active",Number(x.dataset.view)===n));}
+document.querySelectorAll(".next").forEach(b=>b.onclick=()=>{if(validate(currentStep)&&currentStep<3)showStep(currentStep+1);});
+document.querySelectorAll(".back").forEach(b=>b.onclick=()=>{if(currentStep>1)showStep(currentStep-1);});
+document.querySelectorAll(".step").forEach(b=>b.onclick=()=>{let n=Number(b.dataset.step);if(n<=currentStep||validate(currentStep))showStep(n);});
+function validate(n){if(n===1){let r=document.getElementById("recipientName").value.trim(),c=document.getElementById("customerName").value.trim(),p=document.getElementById("pin").value.trim();if(!r||!c){alert("Please enter both names.");return false}if(p&&!/^\d{4}$/.test(p)){alert("Secret code must be 4 digits.");return false}}if(n===2&&photoFiles.length<2){alert("Please add at least 2 photos.");return false}return true}
+document.getElementById("photos").onchange=e=>{photoFiles=[...e.target.files].slice(0,12);renderPhotos();};
+function renderPhotos(){document.getElementById("photoCount").textContent=photoFiles.length+" of 12 added";document.getElementById("photoNeed").textContent=Math.max(0,2-photoFiles.length)+" more to go";const box=document.getElementById("photoPreview");box.innerHTML="";photoFiles.forEach((f,i)=>{const url=URL.createObjectURL(f);box.innerHTML+=`<div class="caption-row"><img class="thumb" src="${url}"><input data-cap="${i}" maxlength="40" placeholder="Caption ${i+1}"></div>`});}
+const reasonBox=document.getElementById("reasons");for(let i=1;i<=6;i++)reasonBox.innerHTML+=`<div class="field"><label>Reason ${i}</label><input id="reason${i}" maxlength="60" placeholder=""></div>`;
+async function loadRazorpay(){if(window.Razorpay)return;await new Promise((res,rej)=>{let s=document.createElement("script");s.src="https://checkout.razorpay.com/v1/checkout.js";s.onload=res;s.onerror=rej;document.head.appendChild(s)})}
+async function uploadFiles(orderId){let out=[];for(const f of photoFiles){const clean=f.name.replace(/[^a-zA-Z0-9._-]/g,"_");const path=orderId+"/memories/"+crypto.randomUUID()+"-"+clean;const r=await supabaseClient.storage.from("customer-media").upload(path,f,{upsert:false});if(r.error)throw new Error(r.error.message);out.push(path)}return out}
+async function createRazorpayOrder(orderId){let r=await fetch(SUPABASE_URL+"/functions/v1/create-razorpay-order",{method:"POST",headers:{"Content-Type":"application/json","apikey":SUPABASE_KEY,"Authorization":"Bearer "+SUPABASE_KEY},body:JSON.stringify({order_id:orderId,amount_rupees:159,receipt:"SP_"+orderId.slice(0,8)})});let d=await r.json().catch(()=>({}));if(!r.ok)throw new Error(d.error||"Could not create payment order.");return d}
+async function verifyPayment(orderId,p){let r=await fetch(SUPABASE_URL+"/functions/v1/verify-razorpay-payment",{method:"POST",headers:{"Content-Type":"application/json","apikey":SUPABASE_KEY,"Authorization":"Bearer "+SUPABASE_KEY},body:JSON.stringify({order_id:orderId,razorpay_order_id:p.razorpay_order_id,razorpay_payment_id:p.razorpay_payment_id,razorpay_signature:p.razorpay_signature})});let d=await r.json().catch(()=>({}));if(!r.ok)throw new Error(d.error||"Payment verification failed.");return d}
+document.getElementById("payButton").onclick=async()=>{const b=document.getElementById("payButton"),s=document.getElementById("paymentStatus");try{if(!validate(1)||!validate(2))return;b.disabled=true;b.textContent="Preparing…";s.textContent="Creating your private page…";const orderId=crypto.randomUUID();const recipient=document.getElementById("recipientName").value.trim(),customer=document.getElementById("customerName").value.trim(),pin=document.getElementById("pin").value.trim();const captions=[...document.querySelectorAll("[data-cap]")].map(x=>x.value.trim());const reasons=[1,2,3,4,5,6].map(i=>document.getElementById("reason"+i).value.trim()).filter(Boolean);const special={template:selectedTemplate,relation,email:document.getElementById("email").value.trim(),hint:document.getElementById("hint").value.trim(),pin:pin||null,photos:[],captions,spotify:document.getElementById("spotify").value.trim(),letter:{opening:document.getElementById("letterOpening").value.trim(),paragraphs:[1,2,3].map(i=>document.getElementById("paragraph"+i).value.trim()).filter(Boolean),signoff:document.getElementById("signoff").value.trim()},reasons,closing:{title:document.getElementById("closingTitle").value.trim(),message:document.getElementById("closingMessage").value.trim()}};let ins=await supabaseClient.from("orders").insert({id:orderId,customer_name:customer,recipient_name:recipient,contact:"",occasion:"Birthday",occasion_date:document.getElementById("occasionDate").value||null,message:special.letter.paragraphs[0]||"Happy Birthday!",special_request:JSON.stringify(special),original_amount:159,discount_amount:0,final_amount:159,status:"new",order_status:"new",payment_status:"unpaid"});if(ins.error)throw new Error("Could not create order: "+ins.error.message);s.textContent="Uploading your memories…";const photos=await uploadFiles(orderId);special.photos=photos;let up=await supabaseClient.from("orders").update({admin_notes:JSON.stringify({template:selectedTemplate,pin:pin||null,photos})}).eq("id",orderId);if(up.error)throw up.error;s.textContent="Opening secure payment…";await loadRazorpay();const ro=await createRazorpayOrder(orderId);const rz=new Razorpay({key:RAZORPAY_KEY_ID,amount:ro.amount,currency:"INR",name:"SpecialPages",description:"Your personalized private page",order_id:ro.razorpay_order_id,prefill:{name:customer},notes:{specialpages_order_id:orderId},theme:{color:"#111"},handler:async p=>{try{s.textContent="Verifying payment…";const v=await verifyPayment(orderId,p);if(v.verified===false)throw new Error("Payment verification failed.");const pageUrl=location.origin+"/orders/p/?id="+orderId;let q=await supabaseClient.from("orders").update({specialpage_url:pageUrl,status:"paid",order_status:"paid",payment_status:"paid"}).eq("id",orderId);if(q.error)throw q.error;s.innerHTML=`🎉 Your page is ready — <a href="${pageUrl}" target="_blank">Open it →</a>`;b.textContent="Website created ✓";b.disabled=false}catch(e){s.textContent="Payment verification failed: "+e.message;b.disabled=false;b.textContent="See my card and pay →"}}});rz.on("payment.failed",()=>{s.textContent="Payment was not completed. Please try again.";b.disabled=false;b.textContent="See my card and pay →"});rz.open()}catch(e){console.error(e);s.textContent="❌ "+e.message;b.disabled=false;b.textContent="See my card and pay →"}};
+</script>
+</body></html>
