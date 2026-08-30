@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>SpecialPages — Create Something They'll Remember</title>
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:#08070b;color:#f8f2f4;font-family:Arial,sans-serif}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+header{position:fixed;top:0;left:0;right:0;z-index:50;padding:18px 6%;display:flex;justify-content:space-between;align-items:center;background:linear-gradient(#08070bee,transparent)}
+.logo{font-family:Georgia,serif;font-size:22px} .logo span{color:#dcaabc}
+nav a{color:#aaa0a7;text-decoration:none;font-size:11px;margin-left:25px}
+.hero{min-height:100svh;display:flex;align-items:center;justify-content:center;text-align:center;padding:120px 6% 80px;background:radial-gradient(circle at 50% 35%,#48233166,transparent 45%)}
+.hero-inner{max-width:850px} .kicker{color:#c4a9b3;font-size:10px;letter-spacing:.3em;text-transform:uppercase}
+.hero h1{font-family:Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(55px,10vw,110px);line-height:.92;margin:25px 0}
+.hero p{max-width:620px;margin:0 auto 30px;color:#aaa0a7;line-height:1.8;font-size:14px}
+.btn{border:1px solid #ffffff1c;background:#ffffff08;color:#f8f2f4;border-radius:999px;padding:14px 24px;cursor:pointer;font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+.btn.primary{background:#e5c2cf;color:#171016;border-color:#e5c2cf}
+.btn:disabled{opacity:.55;cursor:not-allowed;transform:none}
+.hero-buttons{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+.section{padding:100px 6%} .wrap{max-width:1050px;margin:auto}
+.section-title{text-align:center;margin-bottom:45px}
+.section-title h2{font-family:Georgia,serif;font-style:italic;font-weight:400;font-size:48px;margin:15px 0}
+.section-title p{color:#938991;font-size:13px;line-height:1.7}
+.template-card{border:1px solid #e5c2cf;background:#0d0b10;border-radius:26px;padding:10px;color:white;text-align:left;max-width:390px;margin:auto}
+.template-preview{height:270px;border-radius:19px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;overflow:hidden;position:relative;background:radial-gradient(circle at 50% 35%,#612d43,#12090f 70%)}
+.template-preview:after{content:"";position:absolute;inset:0;background-image:radial-gradient(#ffffff18 1px,transparent 1px);background-size:30px 30px}
+.template-preview span,.template-preview strong,.template-preview small{position:relative;z-index:2}
+.template-preview span{font-size:35px;margin-bottom:12px}
+.template-preview strong{font-family:Georgia,serif;font-style:italic;font-size:42px;font-weight:400}
+.template-preview small{margin-top:10px;font-size:9px;letter-spacing:.2em;text-transform:uppercase;opacity:.65}
+.template-info{padding:16px 7px 9px} .template-info strong{display:block;font-family:Georgia,serif;font-size:21px}
+.template-info span{display:block;color:#81767e;font-size:10px;margin-top:6px}
+.builder{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}
+.panel{border:1px solid #ffffff14;background:#0d0b10;border-radius:26px;padding:25px}
+.panel-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px}
+.panel-title h3{font-family:Georgia,serif;font-size:25px;margin:0}
+.step-text{font-size:10px;color:#897d85}
+.step-label{margin-bottom:8px}
+label{display:block;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:#a99da5;margin-bottom:7px}
+.input{width:100%;border:1px solid #ffffff16;background:#08070b;color:#f5eef1;border-radius:12px;padding:13px;font:inherit;font-size:12px;outline:none}
+textarea.input{min-height:110px;resize:vertical}
+.input:focus{border-color:#e5c2cf66;box-shadow:0 0 0 3px #e5c2cf0d}
+.uploadBox{border:1px dashed #ffffff22;background:#08070b;border-radius:14px;padding:16px}
+.uploadBox input{width:100%;font-size:11px}
+.uploadBox p{font-size:9px;color:#766c73;margin:8px 0 0;line-height:1.6}
+.requirements{margin:18px 0 22px;padding:18px;border:1px solid #ffffff16;background:#ffffff05;border-radius:16px;font-size:11px;line-height:1.8;color:#aaa0a7}
+.requirements h4{font-family:Georgia,serif;font-style:italic;font-size:22px;color:#ead9df;margin:0 0 8px}
+.requirements b{color:#e5c2cf}
+.notice{border:1px solid #ffffff12;background:#ffffff04;border-radius:13px;padding:12px;font-size:10px;color:#91858d;line-height:1.7}
+.navrow{display:flex;justify-content:space-between;margin-top:25px;padding-top:20px;border-top:1px solid #ffffff10}
+.preview-panel{border:1px solid #ffffff14;background:#0d0b10;border-radius:26px;padding:12px;position:sticky;top:90px}
+#livePreview{min-height:600px;border-radius:19px;background:radial-gradient(circle at 50% 30%,#572b3d,#0b080d 70%);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:35px;overflow:hidden;position:relative}
+#livePreview:before{content:"";position:absolute;inset:0;background-image:radial-gradient(#ffffff14 1px,transparent 1px);background-size:28px 28px}
+#livePreview>*{position:relative;z-index:1}
+.live-icon{font-size:42px;margin:20px 0}
+.preview-title{font-family:Georgia,serif;font-style:italic;font-size:42px;font-weight:400;margin:0 0 18px}
+.preview-message{color:#aaa0a7;font-size:12px;line-height:1.8;max-width:350px}
+.preview-chips{display:flex;gap:7px;flex-wrap:wrap;justify-content:center;margin-top:25px}
+.previewChip{border:1px solid #ffffff14;border-radius:999px;padding:8px 11px;font-size:9px;color:#aaa0a7}
+.price{max-width:650px;margin:35px auto 0;border:1px solid #ffffff14;background:#0d0b10;border-radius:25px;padding:28px;text-align:center}
+.price-number{font-family:Georgia,serif;font-style:italic;font-size:55px;margin:12px 0}
+.price p{color:#82777f;font-size:11px;line-height:1.7}
+.status{font-size:10px;color:#81757d;margin-top:12px;min-height:15px;line-height:1.5}
+.result{margin-top:20px;padding:20px;border:1px solid #ffffff16;border-radius:18px;background:#08070b;text-align:center}
+@media(max-width:750px){nav{display:none}.hero{padding-top:110px}.hero h1{font-size:55px}.section{padding:80px 5%}.section-title h2{font-size:38px}.builder{grid-template-columns:1fr}.preview-panel{position:static}#livePreview{min-height:500px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">special<span>pages</span>.in</div>
+  <nav><a href="#template">Template</a><a href="#create">Create</a><a href="#how">How it works</a></nav>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div class="kicker">digital surprises · made personal</div>
+    <h1>Create something<br>they'll remember.</h1>
+    <p>Choose our Forever template, send the exact memories requested below, and we'll turn them into a private, cinematic SpecialPage.</p>
+    <div class="hero-buttons">
+      <a class="btn primary" href="#create" style="text-decoration:none">Create your website</a>
+      <a class="btn" href="#how" style="text-decoration:none">How it works</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="template">
+<div class="wrap">
+  <div class="section-title">
+    <div class="kicker">your selected experience</div>
+    <h2>Forever ♡</h2>
+    <p>This is a fixed template. You provide the requested content; the page structure and experience are created for you.</p>
+  </div>
+
+  <div class="template-card">
+    <div class="template-preview">
+      <span>♡</span><strong>Forever</strong><small>romantic · intimate</small>
+    </div>
+    <div class="template-info">
+      <strong>Forever</strong>
+      <span>Couples · Birthday · Anniversary · Love</span>
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="section" id="create">
+<div class="wrap">
+  <div class="section-title">
+    <div class="kicker">make it personal</div>
+    <h2>Give us the memories.</h2>
+    <p>No audio upload and no PIN for this template. Songs are collected directly by us after your order.</p>
+  </div>
+
+  <div class="builder">
+
+    <div class="panel">
+      <div class="panel-title">
+        <h3>Your SpecialPage</h3>
+        <span class="step-text" id="stepText">Step 1 of 4</span>
+      </div>
+
+      <div class="builder-step" data-step="1">
+        <div class="kicker step-label">01 · About you</div>
+        <label>Your name *</label>
+        <input id="customerName" class="input" placeholder="Your name">
+        <br><br>
+        <label>Their name *</label>
+        <input id="recipientName" class="input" placeholder="Who is this for?">
+        <br><br>
+        <label>WhatsApp / contact *</label>
+        <input id="contact" class="input" type="tel" placeholder="Your contact number">
+      </div>
+
+      <div class="builder-step" data-step="2" style="display:none">
+        <div class="kicker step-label">02 · The occasion</div>
+        <label>What are you celebrating?</label>
+        <select id="occasion" class="input">
+          <option>Birthday</option>
+          <option>Anniversary</option>
+          <option>Proposal</option>
+          <option>Just because</option>
+          <option>Our story</option>
+          <option>Other special moment</option>
+        </select>
+        <br><br>
+        <label>Special date</label>
+        <input id="occasionDate" class="input" type="date">
+        <br><br>
+        <label>Choose your mood</label>
+        <select id="mood" class="input">
+          <option>Romantic</option><option>Emotional</option><option>Cute</option><option>Elegant</option><option>Playful</option>
+        </select>
+      </div>
+
+      <div class="builder-step" data-step="3" style="display:none">
+        <div class="kicker step-label">03 · Your words</div>
+        <label>Your main message *</label>
+        <textarea id="message" class="input" placeholder="Write something from your heart..."></textarea>
+        <br><br>
+        <label>Special memories</label>
+        <textarea id="memories" class="input" placeholder="Tell us about your favourite memories together..."></textarea>
+        <br><br>
+        <label>Things you love about them</label>
+        <textarea id="reasons" class="input" placeholder="One thing per line..."></textarea>
+      </div>
+
+      <div class="builder-step" data-step="4" style="display:none">
+        <div class="kicker step-label">04 · Your exact media requirements</div>
+
+        <div class="requirements">
+          <h4>Forever ♡</h4>
+          <div><b>7 photos exactly</b></div>
+          <div><b>2 videos exactly</b></div>
+          <div><b>5 songs</b> — send/contact us directly after placing the order.</div>
+          <div style="margin-top:6px">No audio upload is shown here.</div>
+          <div>No private PIN is required for this template.</div>
+        </div>
+
+        <label>Photos — 7 exactly *</label>
+        <div class="uploadBox">
+          <input id="photos" type="file" accept="image/*" multiple>
+          <p>Select exactly 7 photos.</p>
+        </div>
+
+        <br>
+
+        <label>Videos — 2 exactly *</label>
+        <div class="uploadBox">
+          <input id="videos" type="file" accept="video/*" multiple>
+          <p>Select exactly 2 videos.</p>
+        </div>
+
+        <br>
+
+        <div class="notice">
+          <b style="color:#e5c2cf">Songs:</b> 5 songs are required. Do not upload them here. We will contact you directly to collect the songs.
+        </div>
+      </div>
+
+      <div class="navrow">
+        <button class="btn" id="backBtn" type="button" style="display:none">← Back</button>
+        <span></span>
+        <button class="btn primary" id="nextBtn" type="button">Continue →</button>
+      </div>
+    </div>
+
+    <div class="preview-panel">
+      <div id="livePreview">
+        <div class="kicker" id="previewOccasion">birthday</div>
+        <div class="live-icon">♡</div>
+        <h3 class="preview-title" id="previewTitle">For someone special.</h3>
+        <p class="preview-message" id="previewMessage">Your message will appear here as you build their page.</p>
+        <div class="preview-chips">
+          <span class="previewChip">7 photos</span>
+          <span class="previewChip">2 videos</span>
+          <span class="previewChip">5 songs by contact</span>
+        </div>
+        <div style="margin-top:35px;font-size:9px;color:#81757d">Forever template · fixed experience</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="price">
+    <div class="kicker">your SpecialPage</div>
+    <div class="price-number">₹159</div>
+    <p>One-time payment · No subscription</p>
+    <div class="preview-chips">
+      <span class="previewChip">♡ Personal message</span>
+      <span class="previewChip">✦ 7 Photos</span>
+      <span class="previewChip">✦ 2 Videos</span>
+      <span class="previewChip">♪ 5 Songs by contact</span>
+    </div>
+    <button class="btn primary" id="payButton" type="button">Create & Pay ₹159 →</button>
+    <div class="status" id="paymentStatus"></div>
+  </div>
+
+</div>
+</section>
+
+<section class="section" id="how">
+<div class="wrap">
+  <div class="section-title">
+    <div class="kicker">how it works</div>
+    <h2>Simple from here.</h2>
+    <p>1. Fill in the details → 2. Upload exactly 7 photos and 2 videos → 3. Pay ₹159 → 4. We collect the 5 songs from you directly → 5. Your SpecialPage is prepared.</p>
+  </div>
+</div>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL = "https://omwcwpcymievkcwuurmi.supabase.co";
+const SUPABASE_KEY = "sb_publishable_oGZ6x_40l70-4TV53FIq1A_mq2uvPCb";
+const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const RAZORPAY_KEY_ID = "rzp_test_TVrx7zi04svLPv";
+
+function loadRazorpay(){
+  return new Promise((resolve,reject)=>{
+    if(window.Razorpay) return resolve();
+    const script=document.createElement("script");
+    script.src="https://checkout.razorpay.com/v1/checkout.js";
+    script.async=true;
+    script.onload=()=>window.Razorpay?resolve():reject(new Error("Razorpay failed to initialize."));
+    script.onerror=()=>reject(new Error("Razorpay could not load. Check your internet connection."));
+    document.head.appendChild(script);
+  });
+}
+
+async function uploadMedia(orderId,inputId,folder){
+  const input=document.getElementById(inputId);
+  if(!input || !input.files || !input.files.length) return [];
+  const uploaded=[];
+  for(const file of input.files){
+    const cleanName=file.name.replace(/[^a-zA-Z0-9._-]/g,"_");
+    const path=orderId+"/"+folder+"/"+crypto.randomUUID()+"-"+cleanName;
+    const {error}=await supabaseClient.storage.from("customer-media").upload(path,file,{upsert:false});
+    if(error) throw new Error("Could not upload "+file.name+": "+error.message);
+    uploaded.push(path);
+  }
+  return uploaded;
+}
+
+async function createRazorpayOrder(orderId){
+  const response=await fetch(SUPABASE_URL+"/functions/v1/create-razorpay-order",{
+    method:"POST",
+    headers:{"Content-Type":"application/json","apikey":SUPABASE_KEY,"Authorization":"Bearer "+SUPABASE_KEY},
+    body:JSON.stringify({order_id:orderId,amount_rupees:159,receipt:"SP_"+orderId.substring(0,8)})
+  });
+  const data=await response.json().catch(()=>({}));
+  if(!response.ok) throw new Error(data.error||"Could not create Razorpay order.");
+  return data;
+}
+
+async function verifyPayment(orderId,response){
+  const result=await fetch(SUPABASE_URL+"/functions/v1/verify-razorpay-payment",{
+    method:"POST",
+    headers:{"Content-Type":"application/json","apikey":SUPABASE_KEY,"Authorization":"Bearer "+SUPABASE_KEY},
+    body:JSON.stringify({
+      order_id:orderId,
+      razorpay_order_id:response.razorpay_order_id,
+      razorpay_payment_id:response.razorpay_payment_id,
+      razorpay_signature:response.razorpay_signature
+    })
+  });
+  const data=await result.json().catch(()=>({}));
+  if(!result.ok) throw new Error(data.error||"Payment verification failed.");
+  return data;
+}
+
+async function publishOrder(orderId){
+  const pageUrl=window.location.origin+"/orders/p/?id="+orderId;
+  const {error}=await supabaseClient.from("orders").update({
+    specialpage_url:pageUrl,
+    order_status:"paid",
+    payment_status:"paid",
+    status:"paid"
+  }).eq("id",orderId);
+  if(error) throw error;
+  return pageUrl;
+}
+
+/* BUILDER */
+(function(){
+  let currentStep=1;
+  const steps=[...document.querySelectorAll(".builder-step")];
+
+  function showStep(step){
+    currentStep=step;
+    steps.forEach(el=>el.style.display=Number(el.dataset.step)===step?"block":"none");
+    document.getElementById("stepText").textContent="Step "+step+" of 4";
+    document.getElementById("backBtn").style.display=step>1?"inline-flex":"none";
+    document.getElementById("nextBtn").style.display=step<4?"inline-flex":"none";
+  }
+
+  function validateStep(){
+    if(currentStep===1){
+      if(!customerName.value.trim()||!recipientName.value.trim()||!contact.value.trim()){
+        alert("Please fill in your name, their name and contact number."); return false;
+      }
+    }
+    if(currentStep===3 && !message.value.trim()){
+      alert("Please write a message for them."); return false;
+    }
+    if(currentStep===4){
+      const p=photos.files.length, v=videos.files.length;
+      if(p!==7){alert("Forever requires exactly 7 photos. You selected "+p+".");return false;}
+      if(v!==2){alert("Forever requires exactly 2 videos. You selected "+v+".");return false;}
+    }
+    return true;
+  }
+
+  nextBtn.onclick=()=>{if(validateStep()&&currentStep<4)showStep(currentStep+1)};
+  backBtn.onclick=()=>{if(currentStep>1)showStep(currentStep-1)};
+
+  function preview(){
+    previewTitle.textContent=recipientName.value.trim()?"For "+recipientName.value.trim()+".":"For someone special.";
+    previewOccasion.textContent=(occasion.value||"your special moment").toLowerCase();
+    previewMessage.textContent=message.value.trim()||"Your message will appear here as you build their page.";
+  }
+  ["customerName","recipientName","contact","message","occasion","occasionDate","mood"].forEach(id=>document.getElementById(id).addEventListener("input",preview));
+  occasion.addEventListener("change",preview);
+  photos.addEventListener("change",()=>{if(photos.files.length>7){alert("Forever allows exactly 7 photos.");photos.value="";}});
+  videos.addEventListener("change",()=>{if(videos.files.length>2){alert("Forever allows exactly 2 videos.");videos.value="";}});
+  showStep(1); preview();
+})();
+
+/* PAYMENT */
+document.getElementById("payButton").addEventListener("click",async()=>{
+  const button=document.getElementById("payButton");
+  const status=document.getElementById("paymentStatus");
+
+  try{
+    const customerName=document.getElementById("customerName").value.trim();
+    const recipientName=document.getElementById("recipientName").value.trim();
+    const contact=document.getElementById("contact").value.trim();
+    const message=document.getElementById("message").value.trim();
+    const p=document.getElementById("photos").files.length;
+    const v=document.getElementById("videos").files.length;
+
+    if(!customerName||!recipientName||!contact){alert("Please complete your name, their name and contact number.");return;}
+    if(!message){alert("Please write a message for them.");return;}
+    if(p!==7){alert("Forever requires exactly 7 photos. You selected "+p+".");return;}
+    if(v!==2){alert("Forever requires exactly 2 videos. You selected "+v+".");return;}
+
+    button.disabled=true;
+    button.textContent="Preparing…";
+    status.textContent="Creating your order…";
+
+    const orderId=crypto.randomUUID();
+    const template="forever";
+
+    const {error:orderError}=await supabaseClient.from("orders").insert({
+      id:orderId,
+      customer_name:customerName,
+      recipient_name:recipientName,
+      contact:contact,
+      occasion:document.getElementById("occasion").value,
+      occasion_date:document.getElementById("occasionDate").value||null,
+      message:message,
+      special_request:JSON.stringify({
+        memories:document.getElementById("memories").value,
+        reasons:document.getElementById("reasons").value,
+        mood:document.getElementById("mood").value,
+        template:template,
+        songs_required:5,
+        songs_collection:"contact_after_order",
+        private_pin_required:false
+      }),
+      original_amount:159,
+      discount_amount:0,
+      final_amount:159,
+      status:"new",
+      order_status:"new",
+      payment_status:"unpaid"
+    });
+    if(orderError) throw new Error("Could not create order: "+orderError.message);
+
+    status.textContent="Uploading 7 photos…";
+    const photosUploaded=await uploadMedia(orderId,"photos","photos");
+
+    status.textContent="Uploading 2 videos…";
+    const videosUploaded=await uploadMedia(orderId,"videos","videos");
+
+    const {error:mediaError}=await supabaseClient.from("orders").update({
+      admin_notes:JSON.stringify({
+        template:"forever",
+        photos:photosUploaded,
+        videos:videosUploaded,
+        songs_required:5,
+        songs_collection:"contact_after_order",
+        audio:[],
+        pin:null
+      })
+    }).eq("id",orderId);
+    if(mediaError) throw mediaError;
+
+    status.textContent="Opening secure payment…";
+    await loadRazorpay();
+
+    const razorpayOrder=await createRazorpayOrder(orderId);
+    if(!razorpayOrder?.razorpay_order_id||!razorpayOrder?.amount) throw new Error("Invalid Razorpay order response.");
+
+    const options={
+      key:RAZORPAY_KEY_ID,
+      amount:razorpayOrder.amount,
+      currency:"INR",
+      name:"SpecialPages",
+      description:"Your personalized SpecialPage",
+      order_id:razorpayOrder.razorpay_order_id,
+      prefill:{name:customerName,contact:contact},
+      notes:{specialpages_order_id:orderId},
+      theme:{color:"#e5c2cf"},
+      handler:async function(payment){
+        try{
+          status.textContent="Verifying your payment…";
+          const verified=await verifyPayment(orderId,payment);
+          if(verified.verified===false) throw new Error("Payment verification failed.");
+
+          status.textContent="Creating your website…";
+          const pageUrl=await publishOrder(orderId);
+
+          status.textContent="🎉 Your website is ready!";
+          button.textContent="Website Created ✓";
+          button.disabled=false;
+
+          const result=document.createElement("div");
+          result.className="result";
+          result.innerHTML=`
+            <div style="font-size:28px;margin-bottom:10px">🎉</div>
+            <div style="font-family:Georgia,serif;font-style:italic;font-size:25px;margin-bottom:10px">Your SpecialPage is ready.</div>
+            <div style="font-size:10px;color:#81757d;margin-bottom:15px">Your private website has been created.</div>
+            <input id="generatedLink" readonly value="${pageUrl}" style="width:100%;padding:12px;border-radius:10px;border:1px solid #ffffff15;background:#08070b;color:#eee;font-size:11px;margin-bottom:10px">
+            <br>
+            <button class="btn primary" id="copyLink" type="button">Copy Website Link</button>
+            <a class="btn" href="${pageUrl}" target="_blank" style="display:inline-flex;text-decoration:none;margin-top:8px">Open Website →</a>
+          `;
+          document.getElementById("create").querySelector(".wrap").appendChild(result);
+          document.getElementById("copyLink").onclick=async()=>{
+            await navigator.clipboard.writeText(pageUrl);
+            document.getElementById("copyLink").textContent="Copied ✓";
+          };
+        }catch(error){
+          console.error(error);
+          status.textContent="Payment verification failed: "+error.message;
+          button.disabled=false;
+          button.textContent="Try Again →";
+        }
+      }
+    };
+
+    const checkout=new window.Razorpay(options);
+    checkout.on("payment.failed",()=>{
+      status.textContent="Payment was not completed. Please try again.";
+      button.disabled=false;
+      button.textContent="Create & Pay ₹159 →";
+    });
+    checkout.open();
+
+  }catch(error){
+    console.error(error);
+    status.textContent="❌ "+(error.message||"Something went wrong.");
+    button.disabled=false;
+    button.textContent="Create & Pay ₹159 →";
+  }
+});
+</script>
+</body>
+</html>
