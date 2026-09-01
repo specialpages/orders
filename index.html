@@ -92,7 +92,41 @@ footer{text-align:center;padding:25px;color:#625b66;font-size:.56rem;letter-spac
  section,.price-card,.track-card,.privacy-box,.step,.mock,.panel{animation:spIn .65s ease both}
  @keyframes spIn{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:none}}
 }
-.confirmNext{text-align:center;color:#cfc5d5;font-size:.72rem;line-height:1.7;margin:0 auto 18px}.confirmActions{display:flex;justify-content:center;gap:9px;flex-wrap:wrap}.confirmActions .primary{min-width:220px}</style>
+.confirmNext{text-align:center;color:#cfc5d5;font-size:.72rem;line-height:1.7;margin:0 auto 18px}.confirmActions{display:flex;justify-content:center;gap:9px;flex-wrap:wrap}.confirmActions .primary{min-width:220px}
+/* Post-order confirmation modal */
+.confirmOverlay{
+  position:fixed!important;
+  inset:0!important;
+  z-index:99999!important;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  background:rgba(4,3,8,.88)!important;
+  backdrop-filter:blur(16px);
+}
+.confirmCard{
+  width:min(560px,100%);
+  max-height:90vh;
+  overflow:auto;
+  padding:42px 30px 30px;
+  text-align:center;
+  border:1px solid #ffffff20!important;
+  border-radius:28px;
+  background:radial-gradient(circle at 50% 0%,#382052,#0b0910 62%)!important;
+  box-shadow:0 35px 120px #000d;
+}
+.confirmHeart{font-size:34px;color:#d8b4ff;margin-bottom:10px}
+.confirmCard h2{font:italic clamp(2.2rem,7vw,3.8rem)/1.05 "Playfair Display",serif!important;margin:16px 0;color:#fff!important}
+.confirmCard>p:not(.confirmNext):not(.confirmHint){color:#aaa0ad;font-size:.72rem;line-height:1.8;max-width:460px;margin:0 auto 20px}
+.confirmNext{margin:0 auto 18px!important;color:#e1d8e7!important;font-size:.72rem!important;line-height:1.7!important}
+.confirmHint{margin:18px auto 0!important;color:#716878!important;font-size:.58rem!important;line-height:1.6!important}
+.confirmActions{display:flex!important;justify-content:center;align-items:center;gap:9px;flex-wrap:wrap}
+.confirmActions .primary{min-width:230px}
+.orderBox{margin:0 auto 20px!important;padding:17px!important;border-radius:16px!important;text-align:center!important}
+.orderBox small{display:block;color:#817687;font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:7px}
+.orderBox b{font:italic 2rem "Playfair Display",serif!important;color:#fff!important;letter-spacing:.08em}
+</style>
 </head>
 <body>
 <header><div class="logo">special<span>pages</span>.in</div><nav><a href="#how">How it works</a><a href="#pricing">Price</a><a href="#track">Track order</a><a href="#create">Create yours</a></nav></header>
