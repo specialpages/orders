@@ -86,6 +86,19 @@ footer{text-align:center;padding:25px;color:#625b66;font-size:.56rem;letter-spac
 .track-timeline{margin-top:24px;text-align:left;display:grid}.track-step{position:relative;display:grid;grid-template-columns:44px 1fr;gap:14px;min-height:72px}.track-step:not(:last-child):before{content:"";position:absolute;left:21px;top:42px;width:2px;height:48px;background:var(--line)}.track-dot{width:44px;height:44px;border-radius:50%;border:1px solid #ffffff18;background:#08070d;display:grid;place-items:center;font-size:16px;z-index:1}.track-step.done .track-dot{border-color:#a78bfa;background:#a78bfa;color:#09060f}.track-step.current .track-dot{box-shadow:0 0 0 5px #a78bfa12}.track-step.done:not(:last-child):before{background:#a78bfa55}.track-step h4{margin:3px 0 4px;font-size:12px;font-weight:500;color:#fff}.track-step p{margin:0;color:#766c73;font-size:10px;line-height:1.5}
 .priceSummary{border-color:var(--line)!important}.couponBox{border-color:var(--line)!important;background:#08070d!important}.couponRow input{background:#07060a!important;border-color:var(--line)!important;color:#fff!important}
 .confirmOverlay{background:#050407ee!important}.confirmCard{background:radial-gradient(circle at 50% 0%,#3a2052,#0c0a10 58%)!important;border-color:var(--line)!important}.confirmCard h2{color:#fff}.orderBox{border-color:var(--line)!important;background:#08070d!important}
+
+/* ===== SPECIALPAGES DEMO SHOWCASE ===== */
+.demo-showcase{min-height:auto;padding-top:80px;padding-bottom:90px}
+.demo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;max-width:900px;margin:0 auto}
+.demo-card{display:block;position:relative;overflow:hidden;text-decoration:none;color:#fff;border:1px solid var(--line);border-radius:22px;padding:25px;background:linear-gradient(145deg,#151020ee,#0c0a10f2);transition:.25s ease;box-shadow:0 18px 55px #0006}
+.demo-card:hover{transform:translateY(-5px);border-color:#a78bfa55;box-shadow:0 25px 70px #0009}
+.demo-number{font-size:.5rem;letter-spacing:.18em;color:#9e91ad;text-transform:uppercase}
+.demo-card h3{font:italic 1.65rem "Playfair Display",serif;margin:12px 0 7px}
+.demo-card p{margin:0;color:#89808e;font-size:.64rem;line-height:1.7;max-width:340px}
+.demo-open{display:inline-block;margin-top:18px;color:#b99bff;font-size:.56rem;letter-spacing:.12em;text-transform:uppercase}
+.demo-code{display:inline-block;margin-top:10px;padding:6px 9px;border:1px solid #ffffff12;border-radius:999px;color:#b9afb9;font-size:.52rem;letter-spacing:.08em}
+@media(max-width:600px){.demo-grid{grid-template-columns:1fr}}
+
 @media(max-width:760px){nav{display:none}.builder{grid-template-columns:1fr}.preview{position:static}.step-grid{grid-template-columns:1fr}.stats{gap:22px}.hero h1{font-size:3.7rem}}
 @media(max-width:600px){.track-form{grid-template-columns:1fr}.track-form .btn{grid-column:auto!important}}
 @media(prefers-reduced-motion:no-preference){
@@ -174,6 +187,46 @@ textarea#message{min-height:180px}.char-count{text-align:right;color:#5f5865;fon
 <a class="btn primary" href="#create">Create your surprise</a><a class="btn" href="#demo">See how it looks</a>
 <div class="stats"><div><b>01</b>you share</div><div><b>02</b>we create</div><div><b>03</b>you surprise</div></div>
 </div></section>
+
+<section class="demo-showcase" id="demos">
+  <div class="wrap">
+    <div class="section-title">
+      <div class="kicker">see it for yourself</div>
+      <h2>Explore our demos.</h2>
+      <p>Tap any SpecialPage below to see what we can create.</p>
+    </div>
+    <div class="demo-grid">
+      <a class="demo-card" href="https://tauqeer0028.github.io/custom-surprise-websites/" target="_blank" rel="noopener">
+        <div class="demo-number">Demo 01 · Birthday</div>
+        <h3>Birthday</h3>
+        <p>A personalized birthday SpecialPage made around memories, words and little surprises.</p>
+        <span class="demo-open">Open demo →</span>
+      </a>
+
+      <a class="demo-card" href="https://specialpages.github.io/Until-Always/" target="_blank" rel="noopener">
+        <div class="demo-number">Demo 02 · Romantic</div>
+        <h3>Until Always</h3>
+        <p>A romantic SpecialPage made to impress her and turn feelings into an experience.</p>
+        <span class="demo-open">Open demo →</span>
+      </a>
+
+      <a class="demo-card" href="https://specialpages.github.io/Scrapbook-style-/" target="_blank" rel="noopener">
+        <div class="demo-number">Demo 03 · Scrapbook</div>
+        <h3>Scrapbook Style</h3>
+        <p>A Spider-Man themed scrapbook-style SpecialPage with a locked surprise.</p>
+        <span class="demo-code">🔐 Unlock code: 1408</span><br>
+        <span class="demo-open">Open demo →</span>
+      </a>
+
+      <a class="demo-card" href="https://specialpages.github.io/Just-because-/" target="_blank" rel="noopener">
+        <div class="demo-number">Demo 04 · Just Because</div>
+        <h3>Just Because</h3>
+        <p>A thoughtful SpecialPage made just for her — no occasion needed.</p>
+        <span class="demo-open">Open demo →</span>
+      </a>
+    </div>
+  </div>
+</section>
 
 <section id="demo"><div class="wrap">
 <div class="section-title"><div class="kicker">a glimpse</div><h2>Your story. Your way.</h2><p>The same premium experience can be customized for every person.</p></div>
