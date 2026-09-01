@@ -163,7 +163,6 @@ textarea#message{min-height:180px}.char-count{text-align:right;color:#5f5865;fon
 @media(max-width:700px){.order-shell{display:block;border-radius:22px}.order-side{display:none}.order-main{padding:25px 18px;min-height:auto}.occasion-grid{grid-template-columns:repeat(2,1fr)}.order-intro{margin-bottom:25px}.order-top h3{font-size:1.65rem}}
 
 </style>
-<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
 <body>
 <header><div class="logo">special<span>pages</span>.in</div><nav><a href="#how">How it works</a><a href="#pricing">Price</a><a href="#track">Track order</a><a href="#contact-section">Contact</a><a href="#create">Create yours</a></nav></header>
@@ -374,14 +373,13 @@ textarea#message{min-height:180px}.char-count{text-align:right;color:#5f5865;fon
     <h2>It's on its way. ♡</h2>
     <p>Your SpecialPage request has been received. Keep your Order ID safe — you'll need it to check the progress of your page.</p>
     <div class="orderBox"><small>Your Order ID</small><b id="confirmOrderId">—</b></div>
-    <p class="confirmNext">Choose how you'd like to pay. You can pay securely online or continue on WhatsApp.</p>
+    <p class="confirmNext">Next step: continue to WhatsApp to send your order details and complete payment.</p>
     <div class="confirmActions">
-      <button class="btn primary" id="confirmOnlinePayment" type="button">Pay Online ₹<span id="confirmAmount">—</span> →</button>
-      <a class="btn" id="confirmWhatsApp" href="#" target="_blank" rel="noopener">Pay on WhatsApp 💬</a>
-      <button class="btn" id="confirmCopy" type="button">Copy Order ID</button>
+      <a class="btn primary" id="confirmWhatsApp" href="#" target="_blank" rel="noopener">Continue to WhatsApp →</a>
+      <button class="btn" id="confirmCopy">Copy Order ID</button>
       <a class="btn" href="#track" id="confirmTrack">Track My Order</a>
     </div>
-    <p class="confirmHint">Online payments are processed securely by Razorpay. WhatsApp payment remains available if you prefer to discuss your order first.</p>
+    <p class="confirmHint">Payment is handled through WhatsApp after we review your request.</p>
   </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
@@ -462,116 +460,12 @@ async function uploadFiles(orderId,inputId,folder){
 }
 
 const COUPONS={SPECIAL10:{percent:10},SPECIAL20:{percent:20}};
-const RAZORPAY_KEY_ID="rzp_test_TWsBamwp1WIrXo";
-const CREATE_RAZORPAY_ORDER_URL=SUPABASE_URL+"/functions/v1/create-razorpay-order";
-const VERIFY_RAZORPAY_PAYMENT_URL=SUPABASE_URL+"/functions/v1/verify-razorpay-payment";
-let currentOrderId=null,currentOrderAmount=0;
-
-async function createRazorpayOrder(){
-  if(!currentOrderId||!currentOrderAmount)throw new Error("Order details are missing. Please submit your request again.");
-  const response=await fetch(CREATE_RAZORPAY_ORDER_URL,{
-    method:"POST",
-    headers:{
-      "Content-Type":"application/json",
-      "apikey":SUPABASE_PUBLISHABLE_KEY
-    },
-    body:JSON.stringify({
-      order_id:currentOrderId,
-      amount_rupees:currentOrderAmount,
-      receipt:"SP-"+currentOrderId.slice(0,8).toUpperCase()
-    })
-  });
-  const data=await response.json().catch(()=>({}));
-  if(!response.ok)throw new Error(data.error||data.message||"Could not create the Razorpay payment order.");
-  if(!data.id)throw new Error("Razorpay order was not created.");
-  return data;
-}
-
-async function verifyRazorpayPayment(payment){
-  const response=await fetch(VERIFY_RAZORPAY_PAYMENT_URL,{
-    method:"POST",
-    headers:{
-      "Content-Type":"application/json",
-      "apikey":SUPABASE_PUBLISHABLE_KEY
-    },
-    body:JSON.stringify({
-      order_id:currentOrderId,
-      internal_order_id:currentOrderId,
-      razorpay_payment_id:payment.razorpay_payment_id,
-      razorpay_order_id:payment.razorpay_order_id,
-      razorpay_signature:payment.razorpay_signature
-    })
-  });
-  const data=await response.json().catch(()=>({}));
-  if(!response.ok)throw new Error(data.error||data.message||"Payment verification failed.");
-  if(data.verified===false||data.success===false)throw new Error(data.error||data.message||"Payment could not be verified.");
-  return data;
-}
-
-async function startRazorpayPayment(){
-  const payBtn=$("confirmOnlinePayment");
-  payBtn.disabled=true;
-  payBtn.textContent="Opening secure checkout…";
-  try{
-    if(typeof Razorpay==="undefined")throw new Error("Razorpay checkout could not load. Please refresh and try again.");
-    const order=await createRazorpayOrder();
-    const checkout=new Razorpay({
-      key:RAZORPAY_KEY_ID,
-      amount:order.amount,
-      currency:order.currency||"INR",
-      name:"SpecialPages",
-      description:"SpecialPage digital surprise",
-      order_id:order.id,
-      prefill:{
-        name:$("customerName").value.trim(),
-        contact:$("contact").value.trim()
-      },
-      notes:{specialpages_order_id:currentOrderId},
-      theme:{color:"#a78bfa"},
-      modal:{
-        ondismiss:function(){
-          payBtn.disabled=false;
-          payBtn.textContent="Pay Online ₹"+currentOrderAmount+" →";
-        }
-      },
-      handler:async function(payment){
-        payBtn.disabled=true;
-        payBtn.textContent="Verifying payment…";
-        try{
-          await verifyRazorpayPayment(payment);
-          $("confirmWhatsApp").style.display="none";
-          $("confirmOnlinePayment").textContent="Payment Confirmed ✓";
-          $("confirmOnlinePayment").disabled=true;
-          $("confirmOverlay").querySelector(".confirmNext").textContent="Payment received successfully. Your order is now being prepared.";
-          $("confirmOverlay").querySelector(".confirmHint").textContent="Your Order ID is "+$("confirmOrderId").textContent+". Keep it safe for tracking.";
-        }catch(error){
-          console.error(error);
-          payBtn.disabled=false;
-          payBtn.textContent="Retry Online Payment ₹"+currentOrderAmount+" →";
-          $("submitStatus").textContent="❌ "+(error&&error.message?error.message:"Payment verification failed. Please contact us on WhatsApp.");
-        }
-      }
-    });
-    checkout.on("payment.failed",function(){
-      payBtn.disabled=false;
-      payBtn.textContent="Retry Online Payment ₹"+currentOrderAmount+" →";
-    });
-    checkout.open();
-  }catch(error){
-    console.error(error);
-    payBtn.disabled=false;
-    payBtn.textContent="Pay Online ₹"+currentOrderAmount+" →";
-    $("submitStatus").textContent="❌ "+(error&&error.message?error.message:"Unable to start online payment.");
-  }
-}
-
-
-let appliedCoupon=null,discountAmount=0,finalAmount=159;
+let appliedCoupon=null,discountAmount=0,finalAmount=199;
 function updateCouponDisplay(){$('discountLine').classList.toggle('show',discountAmount>0);$('discountValue').textContent='−₹'+discountAmount;$('finalPrice').textContent='₹'+finalAmount;}
 $('applyCoupon').addEventListener('click',()=>{
  const code=$('couponCode').value.trim().toUpperCase(),msg=$('couponMsg'),coupon=COUPONS[code];
- if(!coupon){appliedCoupon=null;discountAmount=0;finalAmount=159;msg.className='couponMsg err';msg.textContent=code?'Invalid coupon code.':'';updateCouponDisplay();return}
- appliedCoupon=code;discountAmount=Math.round(159*coupon.percent/100);finalAmount=159-discountAmount;
+ if(!coupon){appliedCoupon=null;discountAmount=0;finalAmount=199;msg.className='couponMsg err';msg.textContent=code?'Invalid coupon code.':'';updateCouponDisplay();return}
+ appliedCoupon=code;discountAmount=Math.round(199*coupon.percent/100);finalAmount=199-discountAmount;
  msg.className='couponMsg ok';msg.textContent=code+' applied — you save ₹'+discountAmount+'.';updateCouponDisplay();
 });
 $('submitBtn').addEventListener('click',async()=>{
@@ -605,16 +499,9 @@ $('submitBtn').addEventListener('click',async()=>{
     await uploadFiles(orderId,'videos','videos');
     await uploadFiles(orderId,'audio','audio');
 
-    currentOrderId=orderId;
-    currentOrderAmount=finalAmount;
-
     const shortId=orderId.slice(0,8).toUpperCase();
     const waLink='https://wa.me/919103672989?text='+encodeURIComponent('Hi SpecialPages! ❤️ I just submitted a SpecialPage request. My Order ID is '+shortId+'. I would like to pay ₹'+finalAmount+' via WhatsApp.');
     $('confirmOrderId').textContent=shortId;
-    $('confirmAmount').textContent=finalAmount;
-    $('confirmOnlinePayment').textContent='Pay Online ₹'+finalAmount+' →';
-    $('confirmOnlinePayment').disabled=false;
-    $('confirmWhatsApp').style.display='inline-flex';
     $('confirmWhatsApp').href=waLink;
     $('confirmOverlay').style.display='flex';
     $('confirmCopy').onclick=async()=>{try{await navigator.clipboard.writeText(shortId);$('confirmCopy').textContent='Copied ✓';}catch(e){$('confirmCopy').textContent='Copy manually: '+shortId;}};
@@ -660,7 +547,6 @@ async function trackOrder(){
   }finally{btn.disabled=false}
 }
 $('trackBtn').onclick=trackOrder;
-$('confirmOnlinePayment').onclick=startRazorpayPayment;
 $('trackContact').addEventListener('keydown',e=>{if(e.key==='Enter')trackOrder()});
 const whatsappPay=document.getElementById('whatsappPay');
 if(whatsappPay){
