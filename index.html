@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>SpecialPages — Digital Surprises, Made Personal</title>
+<title>specialpages.in — Digital Surprises, Made Personal</title>
 <style>@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,400;1,500&display=swap');
 :root{
  --bg:#08070b;--surface:#100d17;--surface2:#151020;--line:#ffffff12;
@@ -135,6 +135,48 @@ footer{text-align:center;padding:25px;color:#625b66;font-size:.56rem;letter-spac
 .contact-item b{display:block;color:#fff;font-size:.78rem;font-weight:500;margin-bottom:4px}.contact-item small{display:block;color:#827984;font-size:.62rem}.contact-item strong{color:#a78bfa;font-size:16px}
 @media(max-width:600px){.contact-item{padding:18px}.contact-card{border-radius:20px}}
 #contact-section{scroll-margin-top:90px}
+
+/* SpecialPages Order 2.0 polish */
+.sp-stepper{
+  display:flex;align-items:center;gap:8px;margin:0 0 22px;
+  padding:14px 12px;border:1px solid #ffffff10;border-radius:16px;
+  background:linear-gradient(180deg,#ffffff05,#ffffff02);
+}
+.sp-step{
+  display:flex;flex-direction:column;align-items:center;gap:5px;
+  min-width:52px;transition:.25s ease;opacity:.52;
+}
+.sp-step span{
+  width:31px;height:31px;border-radius:50%;display:grid;place-items:center;
+  border:1px solid #ffffff18;background:#08070d;color:#8f8692;
+  font-size:.56rem;letter-spacing:.08em;
+}
+.sp-step small{
+  color:#766d7b;font-size:.49rem;letter-spacing:.04em;white-space:nowrap;
+}
+.sp-step.active,.sp-step.done{opacity:1}
+.sp-step.active span,.sp-step.done span{
+  border-color:#a78bfa;background:#a78bfa;color:#09060f;
+  box-shadow:0 0 0 4px #a78bfa10;
+}
+.sp-step.active small,.sp-step.done small{color:#cfc5dc}
+.sp-line{height:1px;flex:1;background:#ffffff10;min-width:12px}
+.sp-trust{
+  display:flex;justify-content:center;flex-wrap:wrap;gap:7px;margin-top:15px;
+}
+.sp-trust span{
+  border:1px solid #ffffff0d;background:#08070d;border-radius:999px;
+  padding:7px 10px;color:#817687;font-size:.52rem;letter-spacing:.03em;
+}
+.statusBox{min-height:18px;text-align:center;margin-top:10px}
+@media(max-width:600px){
+  .sp-stepper{gap:4px;padding:11px 7px}
+  .sp-step{min-width:45px}
+  .sp-step small{font-size:.42rem}
+  .sp-step span{width:28px;height:28px}
+  .sp-trust span{font-size:.47rem}
+}
+
 </style>
 </head>
 <body>
@@ -146,29 +188,34 @@ footer{text-align:center;padding:25px;color:#625b66;font-size:.56rem;letter-spac
 <p>Not another birthday text. A beautiful little world made around their memories, your words, music and the moments that matter.</p>
 <a class="btn primary" href="#create">Create your surprise</a><a class="btn" href="#demo">See how it looks</a>
 <div class="stats"><div><b>01</b>you share</div><div><b>02</b>we create</div><div><b>03</b>you surprise</div></div>
-<div style="margin-top:28px;color:#756b78;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase">
-  Birthday · Anniversary · Proposal · Just Because
-</div>
 </div></section>
 
 <section id="demo"><div class="wrap">
 <div class="section-title"><div class="kicker">a glimpse</div><h2>Your story. Your way.</h2><p>The same premium experience can be customized for every person.</p></div>
-<div style="text-align:center;margin:-18px auto 35px">
-  <a class="btn" href="demo.html">Open the romantic demo ↗</a>
-</div>
 <div class="mock"><div class="mock-screen"><div class="kicker">a little something</div><h3>Happy Birthday,<br>Ananya. ♡</h3><p>A personalized experience filled with memories, words and little surprises.</p><div class="mock-heart">♥</div><p>Scroll. Tap. Listen. Remember.</p></div></div>
 </div></section>
 
 <section class="customizer" id="create"><div class="wrap">
 <div class="section-title">
 <div class="kicker">made around your story</div>
-<h2>Create their SpecialPage.</h2>
-<p>Share only what you're comfortable sharing. We'll take care of the rest.</p>
+<h2>Build something unforgettable.</h2>
+<p>Tell us about them, share the memories you love, and we'll turn it into a private digital surprise.</p>
 </div>
 
 <div class="builder">
 <div class="panel">
+
+<div class="sp-stepper" aria-label="Order progress">
+  <div class="sp-step active" data-step-ui="1"><span>01</span><small>About you</small></div>
+  <div class="sp-line"></div>
+  <div class="sp-step" data-step-ui="2"><span>02</span><small>Them</small></div>
+  <div class="sp-line"></div>
+  <div class="sp-step" data-step-ui="3"><span>03</span><small>Your words</small></div>
+  <div class="sp-line"></div>
+  <div class="sp-step" data-step-ui="4"><span>04</span><small>Memories</small></div>
+</div>
 <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px">
+
   <h3 style="margin:0">Your request</h3>
   <span class="hint" style="margin:0">Step <b id="stepNumber">1</b> of 4</span>
 </div>
@@ -212,7 +259,14 @@ footer{text-align:center;padding:25px;color:#625b66;font-size:.56rem;letter-spac
   <button class="btn primary" id="nextBtn" type="button">Continue →</button>
   <button class="btn primary" id="submitBtn" type="button" style="display:none">Send My Request ♡</button>
 </div>
+
+<div class="sp-trust">
+  <span>🔒 Private by default</span>
+  <span>⚡ Fast response</span>
+  <span>💬 WhatsApp support</span>
+</div>
 <div id="submitStatus" class="hint statusBox"></div>
+
 </div>
 
 <div class="preview"><div class="panel">
@@ -341,6 +395,13 @@ function showStep(n){
   $('backBtn').style.display=n>1?'inline-flex':'none';
   $('nextBtn').style.display=n<4?'inline-flex':'none';
   $('submitBtn').style.display=n===4?'inline-flex':'none';
+  document.querySelectorAll('.sp-step').forEach((el,i)=>{
+    el.classList.toggle('active', i+1===n);
+    el.classList.toggle('done', i+1<n);
+  });
+  document.querySelectorAll('.sp-line').forEach((el,i)=>{
+    el.style.background = i+1<n ? '#a78bfa55' : '#ffffff10';
+  });
   updatePreview();
   document.querySelector('.customizer').scrollIntoView({behavior:'smooth',block:'start'});
 }
