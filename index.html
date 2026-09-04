@@ -476,7 +476,7 @@ textarea#message{min-height:180px}.char-count{text-align:right;color:#5f5865;fon
           <div class="media-upload"><div class="media-icon">▶</div><div><b>Videos</b><small>Personal clips · optional</small></div><input id="videos" type="file" accept="video/*" multiple></div>
           <div class="media-upload"><div class="media-icon">♪</div><div><b>Songs / audio</b><small>Your own audio · optional</small></div><input id="audio" type="file" accept="audio/*" multiple></div>
 
-          <div class="couponBox"><div class="field" style="margin:0"><label>Discount code</label><div class="couponRow"><input id="couponCode" placeholder="Enter code" maxlength="30" autocomplete="off"><button class="btn" id="applyCoupon" type="button">Apply</button></div><div id="couponMsg" class="couponMsg"></div></div><div class="priceSummary"><span>Original price</span><b>₹199</b></div><div class="priceSummary discountLine" id="discountLine"><span>Discount</span><b id="discountValue">−₹0</b></div><div class="priceSummary finalPrice"><span>You pay</span><b id="finalPrice">₹199</b></div></div>
+          <div class="couponBox"><div class="field" style="margin:0"><label>Discount code</label><div class="couponRow"><input id="couponCode" placeholder="Enter code" maxlength="30" autocomplete="off"><button class="btn" id="applyCoupon" type="button">Apply</button></div><div id="couponMsg" class="couponMsg"></div></div><div class="priceSummary"><span>Original price</span><b>₹199</b></div><div class="priceSummary discountLine" id="discountLine"><span>Discount</span><b id="discountValue">−₹0</b></div><div class="priceSummary finalPrice"><span>You pay</span><b id="finalPrice">₹159</b></div></div>
         </div>
 
         <div class="formNav">
@@ -685,12 +685,13 @@ async function uploadFiles(orderId,inputId,folder){
 }
 
 const COUPONS={SPECIAL10:{percent:10},SPECIAL20:{percent:20}};
-let appliedCoupon=null,discountAmount=0,finalAmount=199;
+const BASE_PRICE=159;
+let appliedCoupon=null,discountAmount=0,finalAmount=BASE_PRICE;
 function updateCouponDisplay(){$('discountLine').classList.toggle('show',discountAmount>0);$('discountValue').textContent='−₹'+discountAmount;$('finalPrice').textContent='₹'+finalAmount;}
 $('applyCoupon').addEventListener('click',()=>{
  const code=$('couponCode').value.trim().toUpperCase(),msg=$('couponMsg'),coupon=COUPONS[code];
- if(!coupon){appliedCoupon=null;discountAmount=0;finalAmount=199;msg.className='couponMsg err';msg.textContent=code?'Invalid coupon code.':'';updateCouponDisplay();return}
- appliedCoupon=code;discountAmount=Math.round(199*coupon.percent/100);finalAmount=199-discountAmount;
+ if(!coupon){appliedCoupon=null;discountAmount=0;finalAmount=BASE_PRICE;msg.className='couponMsg err';msg.textContent=code?'Invalid coupon code.':'';updateCouponDisplay();return}
+ appliedCoupon=code;discountAmount=Math.round(BASE_PRICE*coupon.percent/100);finalAmount=BASE_PRICE-discountAmount;
  msg.className='couponMsg ok';msg.textContent=code+' applied — you save ₹'+discountAmount+'.';updateCouponDisplay();
 });
 $('submitBtn').addEventListener('click',async()=>{
