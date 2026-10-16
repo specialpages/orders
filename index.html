@@ -445,7 +445,7 @@ footer{color:#827887}
           <div><b>03</b><span>Describe your project</span></div>
           <div><b>04</b><span>Share your assets</span></div>
         </div>
-        <div class="side-note">🔒 Your details and memories stay private.</div>
+        <div class="side-note">🔒 Your project details and files stay private.</div>
       </aside>
 
       <main class="order-main">
@@ -491,7 +491,7 @@ footer{color:#827887}
           </div>
 
           <div class="field"><label id="recipientLabel">Person or business name *</label><input id="name" placeholder="e.g. Your business or brand name"></div>
-          <div class="field"><label id="occasionLabel">What are you celebrating? *</label>
+          <div class="field"><label id="occasionLabel">What should this website help you do? *</label>
             <div class="occasion-grid">
               <button type="button" class="occasion-choice selected" data-value="Birthday">🎂<span>Birthday</span></button>
               <button type="button" class="occasion-choice" data-value="Anniversary">❤️<span>Anniversary</span></button>
@@ -649,7 +649,7 @@ function updateProjectCategory(){
  $('projectStepHeading').textContent=memory?'Who is this little world for?':'Tell us about your project';
  $('projectStepDescription').textContent=memory?'Give us the basics. We’ll handle the magic.':'Describe your business, brand, portfolio or event website.';
  $('recipientLabel').textContent=memory?'Person or business name *':cat==='Restaurant & Cafe'?'Restaurant / café name *':cat==='Event & Celebration'?'Event name *':cat==='Personal Portfolio'?'Your name / portfolio title *':'Business / project name *';
- $('name').placeholder=memory?'e.g. Ananya or your business name':cat==='Restaurant & Cafe'?'e.g. The Green Table':cat==='Event & Celebration'?'e.g. Ayesha & Omar’s wedding':cat==='Personal Portfolio'?'e.g. Your name':'e.g. Your business or brand name';
+ $('name').placeholder=memory?'e.g. Your business or brand name':cat==='Restaurant & Cafe'?'e.g. The Green Table':cat==='Event & Celebration'?'e.g. Ayesha & Omar’s wedding':cat==='Personal Portfolio'?'e.g. Your name':'e.g. Your business or brand name';
  $('occasionLabel').textContent='What should this website help you do? *';
  document.querySelector('.occasion-grid').style.display=memory?'grid':'none';
  const occasion=$('occasion');
@@ -662,7 +662,7 @@ function updateProjectCategory(){
  $('couponBox').style.display=memory?'block':'none';
  $('priceCaption').textContent=memory?'You pay':'Estimated price';
  $('originalPrice').textContent=memory?'₹199':'Custom quote';
- $('priceNote').textContent=memory?'Romantic & memory website: ₹159 one-time. Other website categories receive a custom quote before work begins.':'No fixed price is shown for this category. We’ll review your requirements and confirm the quote before work starts.';
+ $('priceNote').textContent=memory?'Professional website projects are custom-quoted after we review your requirements.':'No fixed price is shown for this category. We’ll review your requirements and confirm the quote before work starts.';
  if(!memory){appliedCoupon=null;discountAmount=0;finalAmount=0;}else{finalAmount=BASE_PRICE-discountAmount;}
  updateCouponDisplay();updatePreview();
 }
