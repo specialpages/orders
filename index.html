@@ -718,7 +718,7 @@ section{padding-top:82px;padding-bottom:82px}
 </style>
 </head>
 <body>
-<header class="site-header"><a class="logo" href="#" aria-label="SpecialPages home">special<span>pages</span>.in</a><button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="Open navigation">☰</button><nav id="siteNav"><a href="#categories">Categories</a><a href="#demos">Demos</a><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#track">Track order</a><a href="#contact-section">Contact</a><a href="#create">Start a project ↗</a></nav></header>
+<header class="site-header"><a class="logo" href="#" aria-label="SpecialPages home">special<span>pages</span>.in</a><button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="Open navigation">☰</button><nav id="siteNav"><a href="#categories">Categories</a><a href="#demos">Demos</a><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#contact-section">Contact</a><a href="#create">Start a project ↗</a></nav></header>
 
 <section class="hero" id="home"><div class="wrap hero-layout"><div class="hero-content">
 <div class="kicker"><span class="availability-dot"></span> Independent digital design studio <span class="kicker-line"></span> SpecialPages.in</div>
@@ -883,20 +883,6 @@ section{padding-top:82px;padding-bottom:82px}
     </div>
   </div>
 </section>
-<section class="track-section" id="track"><div class="wrap">
-<div class="section-title"><div class="kicker">keep an eye on it</div><h2>Track your project.</h2><p>Already sent a request? Check its progress anytime.</p></div>
-<div class="track-card">
-  <div class="kicker">private order lookup</div>
-  <div class="track-form">
-    <input id="trackOrderId" placeholder="Order ID · e.g. A83F21C4" autocomplete="off">
-    <input id="trackContact" type="tel" placeholder="WhatsApp / contact number" autocomplete="tel">
-    <button class="btn primary" id="trackBtn" type="button" style="grid-column:1/-1">Check My Order →</button>
-  </div>
-  <div id="trackResult" class="track-result"></div>
-  <div class="track-note">For privacy, you'll need both your Order ID and the contact number used when you placed the request.</div>
-</div>
-</div></section>
-
 <section class="price-section" id="pricing"><div class="wrap">
 <div class="section-title"><div class="kicker">clear scope · custom quote</div><h2>A bold online presence, built for your goals.</h2><p>Every project is different. We’ll review your requirements and confirm the pages, features, timeline and price before work begins.</p></div>
 <div class="price-card"><div class="kicker">SPECIALPAGES WEB STUDIO</div><div class="price" style="font-size:clamp(2rem,4vw,3.3rem)">Custom quote</div><div class="once">No surprise charges · scope confirmed first</div>
@@ -930,12 +916,7 @@ section{padding-top:82px;padding-bottom:82px}
         <span><b>Email</b><small>specialpages.in@gmail.com</small></span>
         <strong>→</strong>
       </a>
-      <a class="contact-item" href="#track">
-        <span class="contact-icon">⌁</span>
-        <span><b>Already ordered?</b><small>Track your project</small></span>
-        <strong>→</strong>
-      </a>
-    </div>
+      </div>
   </div>
 </section>
 
@@ -947,13 +928,13 @@ section{padding-top:82px;padding-bottom:82px}
     <div class="confirmHeart">✓</div>
     <div class="kicker">request received</div>
     <h2>Your request is on its way.</h2>
-    <p>Your website enquiry has been received. Keep your Order ID safe — you'll need it to check the progress of your page.</p>
+    <p>Your website enquiry has been received. Keep your Order ID safe for your project records.</p>
     <div class="orderBox"><small>Your Order ID</small><b id="confirmOrderId">—</b></div>
     <p class="confirmNext">Next step: chat with us on WhatsApp to discuss your requirements and receive a quote.</p>
     <div class="confirmActions">
       <a class="btn primary" id="confirmWhatsApp" href="#" target="_blank" rel="noopener">Continue to WhatsApp →</a>
       <button class="btn" id="confirmCopy">Copy Order ID</button>
-      <a class="btn" href="#track" id="confirmTrack">Track My Order</a>
+      
     </div>
     <p class="confirmHint">No payment is due until we confirm your project scope and quote.</p>
   </div>
@@ -1125,7 +1106,7 @@ $('submitBtn').addEventListener('click',async()=>{
     $('confirmWhatsApp').href=waLink;
     $('confirmOverlay').style.display='flex';
     $('confirmCopy').onclick=async()=>{try{await navigator.clipboard.writeText(shortId);$('confirmCopy').textContent='Copied ✓';}catch(e){$('confirmCopy').textContent='Copy manually: '+shortId;}};
-    $('confirmTrack').onclick=()=>{$('confirmOverlay').style.display='none';};
+    
     status.textContent='Request received successfully.';
     submit.textContent='Request Sent ✓';
   }catch(err){
