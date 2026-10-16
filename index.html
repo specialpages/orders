@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>SpecialPages — Websites that make a first impression</title>
 <meta name="description" content="Distinctive, responsive websites for businesses, restaurants, brands and creators. Explore design directions and request a tailored quote from SpecialPages.">
-<meta name="theme-color" content="#f6f7f9">
+<meta name="theme-color" content="#080b19">
 <style>@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,400;1,500&display=swap');
 :root{
  --bg:#08070b;--surface:#0d1726;--surface2:#122037;--line:#ffffff12;
@@ -643,6 +643,24 @@ footer{background:#080b19!important;color:#8f99b8!important;border-color:#ffffff
  .track-card,.price-card,.contact-card,.privacy-box{width:100%;min-width:0}
 }
 @media(prefers-reduced-motion:reduce){.demo-card,.category-card,.btn{transition:none!important}}
+
+
+/* FINAL HARD OVERRIDE: OPTION 3 IS A DARK PURPLE/BLUE SITE, NOT WHITE */
+:root{color-scheme:dark!important;--bg:#080b19!important;--surface:#11152b!important;--text:#f6f7ff!important;--muted:#b3bad0!important}
+html,body{background-color:#080b19!important;color:#f6f7ff!important}
+body{background-image:radial-gradient(ellipse at 78% 0%,#6d28d933,transparent 35%),radial-gradient(ellipse at 8% 45%,#4338ca22,transparent 38%),linear-gradient(180deg,#080b19 0%,#0b0b20 52%,#080b19 100%)!important}
+body>section:not(.hero){background-color:#0b0f20!important;color:#f6f7ff!important}
+section.category-section,section.demo-showcase,section.steps,section.price-section,section.contact-section,section.track-section,section.privacy,section.customizer{background-color:#0b0f20!important;background-image:radial-gradient(ellipse at 90% 0%,#4c1d9520,transparent 42%)!important;color:#f6f7ff!important}
+section.agency-section{background-color:#10142a!important;background-image:radial-gradient(ellipse at 80% 20%,#6d28d933,transparent 38%)!important;color:#f7f7ff!important}
+section.cta{background-color:#11122d!important}
+section .wrap,section .section-title{color:#f6f7ff}
+section .section-title h2,section h2,section h3,section h4{color:#f6f7ff}
+.category-card,.demo-card,.step,.track-card,.price-card,.privacy-box,.contact-card,.contact-item{background-color:#11162d!important;color:#f6f7ff!important;border-color:#ffffff20!important}
+.category-card h3,.demo-card h3,.step h3,.track-step h4,.privacy h4,.contact-item b{color:#f6f7ff!important}
+.category-card p,.demo-card p,.section-title p,.step p,.price-note,.track-note,.privacy p,.contact-item small{color:#b3bad0!important}
+.order-main,.live-preview{background:#101429!important;color:#f6f7ff!important}
+.order-main input,.order-main select,.order-main textarea{background:#0a0e20!important;color:#f6f7ff!important}
+#siteNav.open{background:#11162d!important}
 
 </style>
 </head>
