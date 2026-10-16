@@ -688,7 +688,7 @@ input,select,textarea,button{max-width:100%;min-width:0}
   <div class="confirmCard">
     <div class="confirmHeart">♥</div>
     <div class="kicker">request received</div>
-    <h2>It's on its way. ♡</h2>
+    <h2>Your request is on its way.</h2>
     <p>Your SpecialPage request has been received. Keep your Order ID safe — you'll need it to check the progress of your page.</p>
     <div class="orderBox"><small>Your Order ID</small><b id="confirmOrderId">—</b></div>
     <p class="confirmNext">Next step: continue to WhatsApp to send your order details and complete payment.</p>
@@ -723,7 +723,7 @@ function updateProjectCategory(){
  $('occasionLabel').textContent='What should this website help you do? *';
  document.querySelector('.occasion-grid').style.display=memory?'grid':'none';
  const occasion=$('occasion');
- if(memory){occasion.innerHTML='<option>Birthday</option><option>Anniversary</option><option>Proposal</option><option>Just because</option><option>Other special moment</option>';if(!['Birthday','Anniversary','Proposal','Just because','Other special moment'].includes(occasion.value))occasion.value='Birthday';}
+ if(memory){occasion.innerHTML='<option>Generate enquiries</option><option>Show services</option><option>Sell products</option><option>Build portfolio</option><option>Share information</option>';if(!['Generate enquiries','Show services','Sell products','Build portfolio','Share information'].includes(occasion.value))occasion.value='Birthday';}
  else {occasion.innerHTML='<option>Get more enquiries</option><option>Showcase services or products</option><option>Take bookings or reservations</option><option>Sell products online</option><option>Share information / invitations</option><option>Other project goal</option>';}
  $('messageLabel').textContent='Project brief *';
  $('message').placeholder=memory?'Write your message here...':'Tell us what you need, who the website is for, and any pages or features you have in mind...';
