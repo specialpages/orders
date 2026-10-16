@@ -413,6 +413,51 @@ footer{color:#827887}
 .occasion-choice:hover,.occasion-choice.selected{border-color:#3768a7;background:#eff5ff;color:#1d4f91;transform:translateY(-1px)}
 .occasion-choice.selected span{color:#1d4f91}
 @media(max-width:600px){.theme-grid{grid-template-columns:1fr}.theme-card{min-height:145px}.occasion-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Mobile layout safety pass: prevent horizontal overflow and card collisions */
+*,*::before,*::after{box-sizing:border-box}
+html,body{max-width:100%;overflow-x:hidden}
+img,video,iframe{max-width:100%}
+input,select,textarea,button{max-width:100%;min-width:0}
+.wrap,.order-wrap,.order-shell,.order-main,.formStep,.field,.category-card,.demo-card{min-width:0;max-width:100%}
+.category-card h3,.category-card p,.demo-card h3,.demo-card p,.process-list strong,.process-list small{overflow-wrap:anywhere}
+.theme-grid{grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch}
+.theme-card{min-width:0;min-height:158px;padding:58px 15px 16px;background:linear-gradient(135deg,#fff,#f5f8fc);color:#17243b}
+.theme-card b{padding-right:14px;overflow-wrap:anywhere;color:#17243b}
+.theme-card small{overflow-wrap:anywhere;color:#64748b}
+.theme-card.selected{background:linear-gradient(135deg,#eff5ff,#fff);border-color:#3768a7}
+.occasion-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+.occasion-choice{min-width:0;overflow-wrap:anywhere}
+.order-top{gap:12px}.order-top>div:first-child{min-width:0}
+@media(max-width:760px){
+ .site-header{padding-left:5%;padding-right:5%}
+ .site-header .wrap{min-width:0}
+ .hero .wrap,.hero h1,.hero p{max-width:100%;overflow-wrap:anywhere}
+ .category-section,.agency-section,.demo-showcase,.customizer,.contact-section{max-width:100%;overflow:hidden}
+ .order-shell{width:100%;grid-template-columns:minmax(0,1fr)}
+ .order-main{width:100%;padding:24px 16px}
+ .formStep h4{overflow-wrap:anywhere}
+ .field input,.field select,.field textarea{width:100%;min-width:0}
+ .formNav{display:flex;gap:10px;flex-wrap:wrap}
+ .formNav .btn{flex:1 1 120px;min-width:0}
+}
+@media(max-width:600px){
+ .theme-grid{grid-template-columns:1fr;gap:11px}
+ .theme-card{min-height:132px;padding:57px 15px 15px}
+ .theme-card small{font-size:.72rem;line-height:1.5}
+ .occasion-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .category-grid,.demo-grid{grid-template-columns:minmax(0,1fr)}
+ .category-section,.agency-section{padding-left:5%;padding-right:5%}
+ .order-main{padding:22px 14px}
+ .order-count{flex:0 0 auto}
+ .hero .btn{max-width:100%;white-space:normal}
+}
+@media(max-width:360px){
+ .theme-card{padding-left:12px;padding-right:12px}
+ .order-main{padding-left:12px;padding-right:12px}
+ .stats{flex-wrap:wrap}
+ .occasion-choice{padding:12px 5px}
+}
 </style>
 </head>
 <body>
