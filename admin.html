@@ -37,6 +37,73 @@ main{padding:36px 0 70px}
 @media(max-width:900px){.statsGrid{grid-template-columns:repeat(3,minmax(0,1fr))}.heading{grid-template-columns:1fr}.heading:after{justify-self:start}.top:after{display:none}}
 @media(max-width:650px){.wrap{width:min(100% - 24px,560px)}main{padding:25px 0 45px}.heading h1{font-size:34px}.heading p{font-size:12px}.statsGrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.statCard{padding:13px}.statCard:last-child{grid-column:1/-1}.bar{align-items:flex-start}.bar>div:last-child{flex-wrap:wrap;justify-content:flex-end}.tools{grid-template-columns:1fr;padding:9px}.order{padding:15px}.head{gap:8px}.order h3{font-size:18px}.meta{grid-template-columns:1fr;gap:7px;margin:13px 0}.meta div{display:grid;grid-template-columns:100px 1fr;gap:8px;align-items:start}.meta small{margin:2px 0}.payment,.orderStatus{align-items:flex-start}.payment>div{min-width:100px}.detailsGrid{grid-template-columns:1fr}.detailsModal{padding:17px}.deliveryRow{flex-direction:column}.deliveryRow .btn{width:100%}.box{margin:40px auto;padding:23px}.top{padding:13px 0}.logo{font-size:15px}.order .btn{max-width:100%}}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}}
+
+/* Post-login dashboard mobile fit and overflow corrections */
+html,body{width:100%;max-width:100%;overflow-x:hidden}
+.wrap,main,#dashboard,.statsGrid,.tools,.orders,.order{min-width:0;max-width:100%}
+.top{gap:10px;flex-wrap:wrap}
+.top:after{font-size:8px;letter-spacing:.1em;margin-right:0}
+.bar{flex-wrap:wrap;align-items:center}
+.bar>div{min-width:0;max-width:100%}
+.bar>div:last-child{display:flex;gap:7px;flex-wrap:wrap}
+.order,.order *,.detailsModal,.detailsModal *{min-width:0;overflow-wrap:anywhere}
+.head{flex-wrap:wrap}
+.head>div:first-child{flex:1 1 180px;min-width:0}
+.head>.pill{flex:0 0 auto;max-width:100%;white-space:normal;text-align:center}
+.payment,.orderStatus{flex-wrap:wrap}
+.payment>div,.orderStatus>div{min-width:0;max-width:100%}
+.payment .btn,.orderStatus .btn,.detailsActions .btn{max-width:100%;white-space:normal}
+.orderStatus select,.statusSelect{max-width:100%;min-width:0}
+.files a{max-width:100%;word-break:break-word}
+.deliveryRow{min-width:0}
+.deliveryRow input{width:100%;min-width:0}
+@media(max-width:650px){
+ .wrap{width:calc(100% - 24px)}
+ .top{position:relative;padding:12px 0;align-items:center}
+ .logo{font-size:15px}
+ .top:after{margin-left:auto;max-width:100%;text-align:right}
+ main{padding:20px 0 35px}
+ .heading{grid-template-columns:minmax(0,1fr);gap:12px;margin-bottom:20px}
+ .heading h1{font-size:clamp(27px,8vw,34px);overflow-wrap:anywhere}
+ .heading:after{justify-self:start;max-width:100%;font-size:8px}
+ .statsGrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+ .statCard{padding:12px;min-width:0}
+ .statCard small{font-size:8px;letter-spacing:.06em;overflow-wrap:anywhere}
+ .statCard b{font-size:clamp(19px,6vw,25px)}
+ .statCard:last-child{grid-column:1/-1}
+ .bar{align-items:flex-start}
+ .bar>div:last-child{width:100%;justify-content:flex-start}
+ .bar>div:last-child .btn{flex:1 1 auto}
+ .tools{grid-template-columns:minmax(0,1fr);gap:8px;padding:10px}
+ .tools input,.tools select{font-size:14px;min-height:42px}
+ .order{padding:13px;border-radius:15px}
+ .head{align-items:flex-start}
+ .order h3{font-size:17px}
+ .meta{grid-template-columns:minmax(0,1fr);gap:7px}
+ .meta div{grid-template-columns:minmax(84px,30%) minmax(0,1fr);gap:8px}
+ .meta span{overflow-wrap:anywhere}
+ .payment,.orderStatus{align-items:stretch;gap:10px}
+ .payment>div,.orderStatus>div{flex:1 1 100%}
+ .payment .btn,.orderStatus .btn,.orderStatus select{width:100%}
+ .orderStatus select{font-size:14px;min-height:42px}
+ .detailsOverlay{padding:10px;align-items:flex-start;overflow-y:auto}
+ .detailsModal{width:100%;max-height:calc(100dvh - 20px);padding:15px;border-radius:16px;margin:auto 0}
+ .detailsTop h2{font-size:22px;overflow-wrap:anywhere}
+ .detailsGrid{grid-template-columns:minmax(0,1fr)}
+ .detailsActions{display:grid;grid-template-columns:minmax(0,1fr)}
+ .detailsActions .btn{width:100%;min-width:0}
+ .deliveryRow{display:grid;grid-template-columns:minmax(0,1fr)}
+ .deliveryRow .btn{width:100%;white-space:normal}
+ .newAlert,.notificationPanel.show{align-items:flex-start;flex-wrap:wrap}
+}
+@media(max-width:380px){
+ .wrap{width:calc(100% - 18px)}
+ .top:after{font-size:7px;letter-spacing:.06em}
+ .statsGrid{gap:6px}
+ .statCard{padding:10px}
+ .meta div{grid-template-columns:1fr;gap:4px}
+ .payment .btn,.orderStatus .btn{padding:10px 8px}
+}
 </style>
 </head>
 <body>
