@@ -3,7 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>SpecialPages.in — Beautiful Websites for Every Idea</title>
+<title>SpecialPages — Websites that make a first impression</title>
+<meta name="description" content="Distinctive, responsive websites for businesses, restaurants, brands and creators. Explore design directions and request a tailored quote from SpecialPages.">
+<meta name="theme-color" content="#f6f7f9">
 <style>@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,400;1,500&display=swap');
 :root{
  --bg:#08070b;--surface:#0d1726;--surface2:#122037;--line:#ffffff12;
@@ -458,19 +460,98 @@ input,select,textarea,button{max-width:100%;min-width:0}
  .stats{flex-wrap:wrap}
  .occasion-choice{padding:12px 5px}
 }
+
+/* === 2026 STUDIO REDESIGN — full visual system === */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+:root{--bg:#f6f7f9;--surface:#fff;--surface2:#eef1f5;--line:#dce1e8;--text:#172338;--muted:#697588;--soft:#8490a0;--violet:#275bd7;--violet2:#173e9d;--pink:#6687e9;--green:#18a17a}
+html{scroll-padding-top:90px}
+body{background:#f6f7f9;color:#172338;font-family:"DM Sans",sans-serif;font-weight:400}
+body:before{display:none}
+header.site-header{background:#fffffff2!important;border-bottom:1px solid #e7eaf0;box-shadow:0 8px 30px #15243b08;backdrop-filter:blur(18px);padding:16px max(5%,calc((100vw - 1280px)/2));gap:20px}
+.logo{font-family:Manrope,sans-serif;font-weight:800;letter-spacing:-.065em;font-size:1.35rem;color:#172338!important}.logo span{color:#275bd7}
+nav{display:flex;align-items:center;flex-wrap:wrap;justify-content:flex-end;gap:clamp(9px,1.5vw,23px)}
+nav a{font-size:.7rem;letter-spacing:0;text-transform:none;margin:0;color:#56657b;font-weight:600}
+nav a:last-child{background:#1d3769;color:#fff;padding:12px 17px;border-radius:8px}nav a:hover{color:#275bd7}nav a:last-child:hover{color:#fff;background:#275bd7}
+.wrap{width:min(1240px,100%)}
+section{min-height:auto;padding:110px 5%}
+.kicker{font-size:.7rem;letter-spacing:.13em;color:#315cb2;font-weight:800}
+.hero{position:relative;display:block;text-align:left;padding:160px 5% 30px;min-height:780px;overflow:hidden;background:radial-gradient(ellipse at 75% 38%,#e2e9f8,transparent 48%),linear-gradient(135deg,#f8fafc 5%,#f0f4fa 100%)}
+.hero-layout{display:grid;grid-template-columns:1.05fr .95fr;gap:20px;align-items:center;min-height:570px}
+.hero-content{position:relative;z-index:2;padding:20px 0 35px}
+.hero .kicker{display:flex;align-items:center;gap:11px;color:#466386;letter-spacing:.09em;font-size:.67rem;flex-wrap:wrap}
+.availability-dot{width:8px;height:8px;border-radius:50%;background:#1da982;box-shadow:0 0 0 4px #1da9821c}
+.kicker-line{height:1px;width:26px;background:#b8c3d4}
+.hero h1{font:800 clamp(3.2rem,6.4vw,6.6rem)/1.05 Manrope,sans-serif;letter-spacing:-.075em;margin:27px 0 25px;background:none;-webkit-text-fill-color:initial;color:#172338;text-wrap:balance}
+.hero h1 span{color:#245bd7}.hero h1 em{font-style:normal;color:#172338}
+.hero p{margin:0;max-width:515px;font-size:1.05rem;line-height:1.8;color:#5b687c}
+.hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:31px}
+.btn{font-family:Manrope,sans-serif;font-size:.76rem;font-weight:700;letter-spacing:0;text-transform:none;border-radius:9px;padding:15px 22px;background:#fff;border:1px solid #dbe2ed;color:#243550;box-shadow:none}
+.btn.primary{background:#245bd7;color:#fff;border-color:#245bd7;box-shadow:0 10px 22px #245bd72b}
+.btn:hover{box-shadow:0 12px 28px #15243b18;border-color:#245bd7}
+.btn.secondary{background:#fff}
+.hero-proof{display:flex;align-items:center;gap:13px;margin-top:50px}
+.proof-mark{width:42px;height:42px;display:grid;place-items:center;border:1px solid #d7e0ed;border-radius:50%;color:#275bd7;font-size:25px}
+.hero-proof strong,.hero-proof span{display:block}.hero-proof strong{font-size:.83rem}.hero-proof span{font-size:.7rem;color:#78859a;margin-top:5px}
+.hero-art{position:relative;height:555px;min-width:0;perspective:1000px}
+.art-orbit{position:absolute;width:490px;height:490px;top:15px;right:-30px;border:1px solid #cad5e7;border-radius:50%}
+.art-orbit:before{content:"";position:absolute;inset:55px;border:1px dashed #d3ddec;border-radius:50%}
+.art-window{position:absolute;overflow:hidden;background:white;border:1px solid #d8dfeb;border-radius:12px;box-shadow:0 30px 70px #233a6550}
+.art-window-back{width:62%;height:355px;right:-1%;top:15px;transform:rotate(9deg)}
+.art-window-front{width:74%;height:435px;left:3%;top:75px;transform:rotate(-6deg)}
+.art-browser{height:28px;background:#fff;display:flex;align-items:center;gap:4px;padding:0 12px;border-bottom:1px solid #e7eaf0}
+.art-browser i{width:6px;height:6px;border-radius:50%;background:#d4dae4}.art-browser i:first-child{background:#edb1b1}.art-browser small{font-size:8px;color:#8d9aae;margin:auto;transform:translateX(-15px)}
+.art-back-body{height:calc(100% - 28px);background:#e8a98b;padding:48px 30px;color:#422a24;position:relative;overflow:hidden}
+.art-back-body>span{font-size:8px;letter-spacing:.2em;font-weight:700}.art-back-body strong{font:800 43px/1 Manrope;letter-spacing:-.08em;display:block;margin-top:35px;position:relative;z-index:1}
+.art-circle{position:absolute;width:200px;height:200px;background:radial-gradient(circle at 35% 30%,#f4d9bb,#a7554d 60%,#63342d);border-radius:50%;bottom:-25px;right:-40px;box-shadow:inset -15px -20px 25px #4e222f40}
+.art-front-body{height:calc(100% - 28px);background:#102b3d;position:relative;color:#f6f3e9;overflow:hidden;padding:21px 25px}
+.art-mini-nav{font-size:12px;font-weight:800;letter-spacing:.2em;display:flex;justify-content:space-between}.art-mini-nav span{font-size:8px;letter-spacing:0;font-weight:500}
+.art-portrait{position:absolute;width:250px;height:250px;right:-60px;top:70px;border-radius:50%;background:radial-gradient(circle at 36% 25%,#e8d6c1,#b48d78 35%,#465a52 68%,#172e34 70%);opacity:.9}
+.art-overline{display:block;font-size:8px;letter-spacing:.18em;margin-top:85px;position:relative;z-index:1}
+.art-front-body>strong{display:block;font:800 clamp(39px,4vw,58px)/.97 Manrope;letter-spacing:-.08em;position:relative;z-index:1;margin-top:15px}.art-front-body>strong span{color:#b7d477}
+.art-mini-footer{position:absolute;bottom:20px;left:25px;right:25px;border-top:1px solid #ffffff50;padding-top:12px;display:flex;justify-content:space-between;font-size:8px;letter-spacing:.08em}
+.floating-note,.art-tag{position:absolute;z-index:3;background:#fff;border:1px solid #e0e5ee;box-shadow:0 15px 35px #25395924;border-radius:8px;padding:13px 18px;font-weight:700;font-size:.73rem;color:#263c61}
+.floating-note{top:45px;left:-15px;transform:rotate(-7deg)}.floating-note span{color:#275bd7}.art-tag{right:-5px;bottom:28px;transform:rotate(5deg)}
+.hero-bottom{display:flex;justify-content:space-between;border-top:1px solid #d8e0ec;padding:23px 0;color:#7d8ba1;font-size:.62rem;font-weight:800;letter-spacing:.14em}
+.studio-strip{background:#182c50;color:#fff;padding:23px 5%;overflow:hidden}.strip-inner{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}.strip-inner>span{font-size:.6rem;letter-spacing:.13em;color:#aab9d3;font-weight:800}.strip-inner strong{font:600 clamp(.9rem,1.4vw,1.2rem) Manrope}.strip-inner b{color:#789fff}
+.section-title{text-align:left;max-width:780px;margin:0 0 45px}.section-title h2,.agency-section h2,.order-intro h2,.cta h2{font:800 clamp(2.1rem,4.5vw,4.1rem)/1.12 Manrope,sans-serif!important;letter-spacing:-.06em;color:#172338!important;margin:16px 0}.section-title p{font-size:1rem;line-height:1.75;color:#68768b}
+.category-section,.demo-showcase,.steps,.price-section,.contact-section{background:#fff}
+.category-grid{gap:18px}.category-card{border:1px solid #e2e7ef!important;background:#fff!important;border-radius:14px!important;box-shadow:0 8px 30px #1a315010!important;transition:transform .25s,box-shadow .25s!important;color:#172338!important;overflow:hidden}
+.category-card:hover{transform:translateY(-7px);box-shadow:0 20px 48px #1a31501c!important}
+.category-card h3{font-family:Manrope,sans-serif!important;font-weight:800!important;letter-spacing:-.04em;color:#172338!important}.category-card p{color:#69778a!important}.category-index{color:#2b5ed3!important;font-weight:800}.category-link{color:#255bd4!important;font-weight:800}
+.agency-section{background:#eff3f9}.agency-section h2 em,.order-intro h2 em{color:#275bd7;font-style:normal}.agency-section p,.process-list small{color:#64758a!important}.process-list>div{border-color:#d7e0ed!important}.process-list strong{color:#1c2b43!important}
+.demo-grid{max-width:none;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}.demo-card{background:#f4f7fb!important;color:#18263d!important;border:1px solid #e1e7f0!important;box-shadow:none!important;border-radius:13px!important;min-height:230px;display:flex;flex-direction:column;justify-content:flex-end}.demo-card:nth-child(2){background:#eaf2f1!important}.demo-card:nth-child(3){background:#f9eee7!important}.demo-card:nth-child(4){background:#f2eaf6!important}.demo-card:nth-child(5){background:#edf1fa!important}.demo-card:nth-child(6){background:#e9f2ee!important}.demo-card:hover{box-shadow:0 18px 38px #14253c1a!important}.demo-card h3{font:800 1.55rem/1.2 Manrope!important;letter-spacing:-.05em}.demo-number,.demo-open{color:#315fb6!important;font-weight:800}.demo-card p{color:#647389!important;font-size:.77rem!important}.demo-open{margin-top:15px}
+.customizer{background:#eff3f9!important}.order-intro h2{color:#172338!important}.order-intro p{color:#65748a!important}
+.order-shell{box-shadow:0 25px 70px #20385d1c!important;border:1px solid #dce3ee!important}
+.order-side{background:#192f55!important}.order-main{background:#fff!important;color:#172338!important}.live-preview{background:#e9eef7!important}
+.order-main h3,.order-main h4,.order-main label,.order-main .big-step,.order-main .step-desc{color:#20304a!important}
+.field input,.field select,.field textarea,.track-form input{background:#fff!important;color:#172338!important;border:1px solid #d9e1ec!important}.field input:focus,.field select:focus,.field textarea:focus{border-color:#275bd7!important;box-shadow:0 0 0 3px #275bd719!important}
+.theme-card{border-color:#dbe2ed!important}.theme-card.selected{border-color:#275bd7!important;box-shadow:0 0 0 2px #275bd725!important}
+.track-section{background:#eff3f9}.track-card,.price-card,.privacy-box,.step,.contact-card{background:#fff!important;border:1px solid #dfe5ef!important;box-shadow:0 15px 40px #142b4910!important}
+.track-id,.track-step h4,.privacy h4,.step h3,.contact-item b{color:#172338!important}.track-note,.step p,.privacy p,.contact-item small{color:#65748a!important}.track-result{background:#f5f7fb!important;color:#20304a!important;border-color:#dce4ef!important}
+.price-card .price{color:#245bd7!important}.price-card .once,.price-note{color:#65748a!important}.feature{color:#3c526e!important;border-color:#dce3ed!important}
+.privacy{background:#eff3f9}.privacy-box{max-width:1240px}.steps .step{border-radius:13px}.num{font:800 2rem Manrope;color:#275bd7}
+.contact-section{background:#f7f9fc}.contact-item{border-color:#dfe5ee!important;color:#21344e!important}
+.cta{background:#192f55!important;min-height:460px}.cta h2{color:#fff!important}.cta p{color:#c0cee2!important}.cta .kicker{color:#9db7ed}
+footer{background:#12243f;color:#afbdd0;border-color:#243e62;padding:28px}
+.confirmOverlay{background:#12213bcf!important}.confirmCard{background:#fff!important;color:#172338!important;border-color:#e0e6f0!important}.confirmCard h2{color:#172338!important}.confirmCard p{color:#68768a!important}.confirmHeart{color:#275bd7!important}.orderBox{background:#f3f6fa!important;border-color:#dce4ed!important;color:#172338!important}
+@media(max-width:1050px){.hero-layout{grid-template-columns:1fr 1fr}.hero h1{font-size:clamp(3rem,6vw,5.4rem)}.hero-art{transform:scale(.85);transform-origin:center}.demo-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:760px){header.site-header{padding:14px 5%}.hero{padding:110px 5% 25px;min-height:auto}.hero-layout{grid-template-columns:1fr;gap:15px}.hero-content{padding:15px 0 0}.hero h1{font-size:clamp(2.9rem,10vw,4.7rem);margin:23px 0}.hero p{font-size:.94rem}.hero-art{height:450px;max-width:540px;width:100%;margin:auto;transform:scale(.88);transform-origin:center top}.hero-proof{margin-top:30px}.hero-bottom{margin-top:-35px}.studio-strip{padding:20px 5%}.strip-inner{justify-content:center}.strip-inner>span{width:100%;text-align:center}.section-title h2{font-size:clamp(2rem,8vw,3.1rem)!important}.demo-grid{grid-template-columns:1fr}.demo-card{min-height:195px}.hero-bottom span:last-child{display:none}section{padding:75px 5%}.hero{padding-top:110px}.mobile-menu-toggle{color:#1d3769!important;border-color:#dce3ed!important;background:#fff!important}nav#siteNav.open{background:#fff!important;border:1px solid #e2e7ef!important;box-shadow:0 15px 30px #1b315125!important}nav#siteNav a{color:#344862!important}nav#siteNav a:last-child{color:#fff!important}}
+@media(max-width:420px){.hero h1{font-size:clamp(2.55rem,11vw,3.5rem)}.hero-art{height:360px;transform:scale(.72);width:125%;margin-left:-12%}.hero-actions .btn{flex:1;min-width:140px}.floating-note{left:0}.art-tag{right:0}.hero-bottom{margin-top:-55px}.strip-inner strong{font-size:.75rem}.strip-inner b{font-size:.75rem}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 </style>
 </head>
 <body>
 <header class="site-header"><a class="logo" href="#" aria-label="SpecialPages home">special<span>pages</span>.in</a><button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="Open navigation">☰</button><nav id="siteNav"><a href="#categories">Categories</a><a href="#demos">Demos</a><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#track">Track order</a><a href="#contact-section">Contact</a><a href="#create">Start a project ↗</a></nav></header>
 
-<section class="hero"><div class="wrap">
-<div class="kicker">A creative studio for your next idea</div>
-<h1>Every idea deserves<br>a beautiful website.</h1>
-<p>From professional business websites and creative portfolios to unforgettable personal experiences, discover a design made for your purpose.</p>
-<a class="btn primary" href="#categories">Explore categories</a><a class="btn" href="#create">Build my website</a>
-<div class="stats"><div><b>01</b>Share your idea</div><div><b>02</b>Shape the design</div><div><b>03</b>Bring it to life</div></div>
-</div></section>
-
+<section class="hero" id="home"><div class="wrap hero-layout"><div class="hero-content">
+<div class="kicker"><span class="availability-dot"></span> Independent digital design studio <span class="kicker-line"></span> SpecialPages.in</div>
+<h1>Make your<br><span>first impression</span><br><em>unforgettable.</em></h1>
+<p>Thoughtfully designed websites that turn your business, brand or big idea into a digital experience people remember.</p>
+<div class="hero-actions"><a class="btn primary" href="#create">Start your project <span aria-hidden="true">↗</span></a><a class="btn secondary" href="#demos">Explore our work <span aria-hidden="true">↘</span></a></div>
+<div class="hero-proof"><div class="proof-mark">✳</div><div><strong>Built around your ambition.</strong><span>Custom design · Mobile-first · Made to connect</span></div></div>
+</div><div class="hero-art" aria-label="Illustrative website design concepts"><div class="art-orbit"></div><div class="floating-note"><span>✦</span> Made to stand out</div><div class="art-window art-window-back"><div class="art-browser"><i></i><i></i><i></i><small>studio / preview</small></div><div class="art-back-body"><span>THE NEXT CHAPTER</span><strong>Objects<br>of desire.</strong><div class="art-circle"></div></div></div><div class="art-window art-window-front"><div class="art-browser"><i></i><i></i><i></i><small>yourbrand / home</small></div><div class="art-front-body"><div class="art-mini-nav">ATELIER <span>Menu ↗</span></div><div class="art-portrait"></div><span class="art-overline">DESIGN THAT MOVES PEOPLE</span><strong>Different<br>by design<span>.</span></strong><div class="art-mini-footer">DISCOVER THE COLLECTION <span>↗</span></div></div></div><div class="art-tag">✳ &nbsp; Crafted for your brand</div></div></div>
+<div class="hero-bottom wrap"><span>SCROLL TO EXPLORE <span aria-hidden="true">↓</span></span><span>STRATEGY / DESIGN / DEVELOPMENT</span></div></section>
+<section class="studio-strip" aria-label="Studio services"><div class="wrap strip-inner"><span>MORE THAN JUST A WEBSITE</span><strong>Distinctive design</strong><b>✳</b><strong>Seamless experience</strong><b>✳</b><strong>Purposeful results</strong></div></section>
 <section class="category-section" id="categories"><div class="wrap">
 <div class="section-title"><div class="kicker">one studio · many possibilities</div><h2>Beautiful websites, built around your idea.</h2><p>Explore a design direction that fits your business, your work, or your most meaningful moments.</p></div>
 <div class="category-grid">
@@ -481,7 +562,7 @@ input,select,textarea,button{max-width:100%;min-width:0}
 <a class="category-card" href="category.html?type=events"><img src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=900&q=85" alt="Elegant wedding celebration" loading="lazy"><span class="category-index">05 / CELEBRATE</span><h3>Events & Celebrations</h3><p>Digital invitations and event pages for weddings, birthdays and gatherings.</p><span class="category-link">Explore this category ↗</span></a>
 <a class="category-card" href="category.html?type=healthcare"><img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=900&q=85" alt="Modern healthcare practice interior" loading="lazy"><span class="category-index">06 / PROFESSIONAL</span><h3>Healthcare &amp; Wellness</h3><p>Clear service information and patient-friendly websites for clinics, practices and wellness providers.</p><span class="category-link">Explore this category ↗</span></a>
 </div></div></section>
-<section class="agency-section"><div class="wrap agency-layout"><div><div class="kicker">a simple, thoughtful process</div><h2>From first idea<br><em>to finished page.</em></h2><p>Choose a direction, share your details, and we’ll shape a website around your purpose. The existing personalized order experience remains available below.</p><a class="btn primary" href="#create">Start a project</a></div><div class="process-list"><div><b>01</b><span><strong>Choose your project</strong><small>Business, hospitality, commerce, portfolio or professional services.</small></span></div><div><b>02</b><span><strong>Explore real demos</strong><small>See examples before you decide.</small></span></div><div><b>03</b><span><strong>Share your requirements</strong><small>Tell us about your goals, content and preferred style.</small></span></div><div><b>04</b><span><strong>Confirm your project scope</strong><small>Pricing and delivery are confirmed for your project.</small></span></div></div></div></section>
+<section class="agency-section"><div class="wrap agency-layout"><div><div class="kicker">a simple, thoughtful process</div><h2>From first idea<br><em>to finished page.</em></h2><p>Choose a direction, share your details, and we’ll shape a website around your purpose. Share your vision and we’ll help turn it into a compelling online presence.</p><a class="btn primary" href="#create">Start a project</a></div><div class="process-list"><div><b>01</b><span><strong>Choose your project</strong><small>Business, hospitality, commerce, portfolio or professional services.</small></span></div><div><b>02</b><span><strong>Explore design directions</strong><small>Preview our design approach before you decide.</small></span></div><div><b>03</b><span><strong>Share your requirements</strong><small>Tell us about your goals, content and preferred style.</small></span></div><div><b>04</b><span><strong>Confirm your project scope</strong><small>Pricing and delivery are confirmed for your project.</small></span></div></div></div></section>
 <section class="demo-showcase" id="demos"><div class="wrap">
 <div class="section-title"><div class="kicker">design directions</div><h2>Professional website concepts.</h2><p>Explore visual directions we can tailor to your business. These are design concepts, not links to finished client websites.</p></div>
 <div class="demo-grid business-concepts">
@@ -600,9 +681,9 @@ input,select,textarea,button{max-width:100%;min-width:0}
           <button class="btn" id="backBtn" type="button" style="display:none">← Back</button>
           <div class="nav-spacer"></div>
           <button class="btn primary" id="nextBtn" type="button">Continue →</button>
-          <button class="btn primary" id="submitBtn" type="button" style="display:none">Send My Request ♡</button>
+          <button class="btn primary" id="submitBtn" type="button" style="display:none">Send my request ↗</button>
         </div>
-        <div class="sp-trust"><span>🔒 Private</span><span>💬 WhatsApp support</span><span>⚡ One-time payment</span></div>
+        <div class="sp-trust"><span>🔒 Private</span><span>💬 WhatsApp support</span><span>✦ Custom quote</span></div>
         <div id="submitStatus" class="hint statusBox"></div>
       </main>
 
@@ -614,13 +695,13 @@ input,select,textarea,button{max-width:100%;min-width:0}
             <div class="tiny" id="pOccasion">Business Website</div>
             <div class="tiny" id="pTheme">Modern Corporate style</div>
             <h3><span id="previewGreeting">Your Website</span></h3>
-            <p id="pMessage">Your message will appear here as you build the page.</p>
+            <p id="pMessage">Your website concept updates as you describe your project.</p>
             <div class="preview-line"></div>
             <div class="preview-tags"><span>Services</span><span>About</span><span>Contact</span></div>
-            <div class="mock-heart">♥</div>
+            
           </div>
         </div>
-        <p class="preview-note">Your final page will be designed individually around your story.</p>
+        <p class="preview-note">An illustrative preview. Your final website will be tailored to your business.</p>
       </aside>
     </div>
   </div>
@@ -686,18 +767,18 @@ input,select,textarea,button{max-width:100%;min-width:0}
 
 <div id="confirmOverlay" class="confirmOverlay" role="dialog" aria-modal="true">
   <div class="confirmCard">
-    <div class="confirmHeart">♥</div>
+    <div class="confirmHeart">✓</div>
     <div class="kicker">request received</div>
     <h2>Your request is on its way.</h2>
-    <p>Your SpecialPage request has been received. Keep your Order ID safe — you'll need it to check the progress of your page.</p>
+    <p>Your website enquiry has been received. Keep your Order ID safe — you'll need it to check the progress of your page.</p>
     <div class="orderBox"><small>Your Order ID</small><b id="confirmOrderId">—</b></div>
-    <p class="confirmNext">Next step: continue to WhatsApp to send your order details and complete payment.</p>
+    <p class="confirmNext">Next step: chat with us on WhatsApp to discuss your requirements and receive a quote.</p>
     <div class="confirmActions">
       <a class="btn primary" id="confirmWhatsApp" href="#" target="_blank" rel="noopener">Continue to WhatsApp →</a>
       <button class="btn" id="confirmCopy">Copy Order ID</button>
       <a class="btn" href="#track" id="confirmTrack">Track My Order</a>
     </div>
-    <p class="confirmHint">Payment is handled through WhatsApp after we review your request.</p>
+    <p class="confirmHint">No payment is due until we confirm your project scope and quote.</p>
   </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
