@@ -295,11 +295,100 @@ textarea#message{min-height:180px}.char-count{text-align:right;color:#5f5865;fon
 @media(max-width:900px){.category-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.agency-layout{grid-template-columns:1fr}}
 @media(max-width:600px){.category-section,.agency-section{padding:70px 5%}.category-grid{grid-template-columns:1fr} .category-card img{height:230px}}
 .project-category{width:100%;background:#100d17;color:#f8f4fa;border:1px solid #ffffff24;border-radius:12px;padding:14px 15px;font:inherit;outline:none}.project-category:focus{border-color:#a78bfa}.category-help{display:block;color:#a59ba9;font-size:.78rem;line-height:1.5;margin-top:8px}.category-card.active-category{border-color:#a78bfa;box-shadow:0 0 0 1px #a78bfa40}
-@media(prefers-reduced-motion:reduce){.category-card{transition:none}.category-card:hover{transform:none}}
+
+/* ===== COHESIVE PREMIUM DARK THEME — SITE-WIDE ===== */
+:root{--agency-paper:#0c0a11;--agency-ink:#f8f4fa;--agency-muted:#a59ba9;--agency-accent:#c4b5fd}
+body{background-color:#08070b}
+.site-header{padding:15px 5.5%;background:rgba(8,7,11,.78);border-bottom:1px solid #ffffff0e;backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px)}
+.site-header .logo{color:#fff;text-decoration:none;font-size:1.45rem;white-space:nowrap}
+.site-header nav{display:flex;align-items:center;gap:clamp(10px,1.7vw,25px)}
+.site-header nav a{margin:0;color:#a9a0af;font-size:.62rem;letter-spacing:.09em;white-space:nowrap}
+.site-header nav a:hover,.site-header nav a:focus-visible{color:#fff}
+.site-header nav a:last-child{padding:10px 13px;border:1px solid #a78bfa66;border-radius:10px;color:#e9ddff;background:#a78bfa0b}
+.mobile-menu-toggle{display:none}
+.hero{position:relative;isolation:isolate;background:radial-gradient(ellipse at 50% 30%,#7c3aed20,transparent 48%),radial-gradient(ellipse at 12% 75%,#f0abfc0b,transparent 32%),transparent}
+.hero:after{content:"";position:absolute;z-index:-1;inset:18% 12% 14%;border:1px solid #ffffff07;border-radius:50%;filter:blur(1px);pointer-events:none}
+.hero .wrap{max-width:1000px}
+.hero .kicker{color:#c4b5fd}
+.hero h1{font-size:clamp(3.4rem,8.2vw,7.8rem);letter-spacing:-.055em}
+.hero p{font-size:clamp(.95rem,1.5vw,1.1rem);max-width:700px}
+.hero .btn{padding:15px 22px;border-radius:12px}
+.stats{gap:clamp(25px,5vw,65px)}
+.category-section,.agency-section{background:radial-gradient(ellipse at 10% 0%,#7c3aed0b,transparent 45%),linear-gradient(180deg,#0c0a11,#0a080e);color:#f8f4fa;border-top:1px solid #ffffff08;border-bottom:1px solid #ffffff08}
+.category-section .section-title,.agency-section .section-title{max-width:800px;margin-bottom:48px}
+.category-section .kicker,.agency-section .kicker{color:#c4b5fd}
+.category-section h2,.agency-section h2{font:400 clamp(2.35rem,5vw,4.3rem)/1.06 'Playfair Display',Georgia,serif;color:#f8f4fa;letter-spacing:-.035em}
+.category-section .section-title p,.agency-section p{color:#a59ba9;line-height:1.8}
+.category-grid{gap:18px}
+.category-card{position:relative;overflow:hidden;background:linear-gradient(145deg,#15111e,#0e0b13);color:#f8f4fa;border:1px solid #ffffff12;border-radius:18px;padding:10px 10px 22px;box-shadow:0 15px 45px #0002;transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease}
+.category-card:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(180deg,transparent 30%,#08070b0d)}
+.category-card:hover{transform:translateY(-6px);border-color:#a78bfa55;box-shadow:0 24px 65px #0006}
+.category-card img{height:220px;border-radius:11px;filter:saturate(.82) brightness(.82);transition:filter .35s ease,transform .6s ease}
+.category-card:hover img{filter:saturate(1) brightness(.96);transform:scale(1.025)}
+.category-index{margin:20px 7px 9px;color:#c4b5fd;font-size:.59rem}
+.category-card h3{margin:0 7px 10px;font:400 clamp(1.35rem,2vw,1.7rem)/1.12 'Playfair Display',Georgia,serif;color:#fff}
+.category-card p{margin:0 7px 18px;color:#a59ba9;font-size:.8rem;line-height:1.7}
+.category-link{display:inline-block;margin:0 7px;color:#d8c9ff;font-size:.63rem;letter-spacing:.1em}
+.agency-section{background:radial-gradient(ellipse at 88% 20%,#7c3aed12,transparent 40%),#09070d}
+.agency-layout{gap:clamp(35px,7vw,90px)}
+.agency-section h2 em{color:#c4b5fd}
+.process-list{border-top:1px solid #ffffff18}
+.process-list>div{gap:22px;padding:22px 0;border-bottom:1px solid #ffffff12}
+.process-list b{color:#c4b5fd}
+.process-list strong{color:#f8f4fa;font-weight:500;font-size:.93rem}
+.process-list small{color:#a59ba9;line-height:1.6;font-size:.77rem}
+.section-title h2{font-size:clamp(2.2rem,4.5vw,3.6rem);letter-spacing:-.025em}
+.section-title p{line-height:1.75}
+.demo-card,.step,.track-card,.contact-card,.price-card{border-color:#ffffff14}
+.demo-card{border-radius:18px}
+.demo-card:hover{border-color:#a78bfa66}
+.price-card{background:radial-gradient(circle at 50% 0%,#7c3aed1c,transparent 58%),linear-gradient(145deg,#151020,#0b0910)}
+.contact-card{background:linear-gradient(145deg,#151020,#0b0910)}
+footer{color:#827887}
+.category-section,.agency-section,.demo-showcase,.price-section,.track-section,.contact-section,.steps{scroll-margin-top:90px}
+#categories,#demos,#how,#pricing,#track,#contact-section,#create{scroll-margin-top:90px}
+@media(max-width:900px){
+ .site-header{padding:14px 5%}
+ .site-header nav{gap:11px}
+ .site-header nav a{font-size:.55rem;letter-spacing:.05em}
+ .category-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:760px){
+ .site-header{padding:13px 5%;min-height:66px}
+ .mobile-menu-toggle{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border:1px solid #ffffff1c;border-radius:12px;background:#ffffff08;color:#f8f4fa;font-size:20px;cursor:pointer}
+ .site-header nav{display:none;position:absolute;top:65px;left:4%;right:4%;padding:14px;background:#100d17f7;border:1px solid #ffffff18;border-radius:16px;box-shadow:0 25px 70px #000b;flex-direction:column;align-items:stretch;gap:2px}
+ .site-header nav.open{display:flex}
+ .site-header nav a{display:block;padding:13px 12px;font-size:.68rem;border-radius:9px}
+ .site-header nav a:last-child{margin-top:5px;text-align:center}
+ .hero{padding-top:100px;padding-bottom:85px}
+ .hero h1{font-size:clamp(3.15rem,11vw,5.1rem)}
+ .stats{gap:24px;margin-top:48px}
+ .category-section,.agency-section{padding:78px 5%}
+ .agency-layout{gap:30px}
+}
+@media(max-width:600px){
+ .category-grid{grid-template-columns:1fr;gap:14px}
+ .category-card{padding:9px 9px 20px}
+ .category-card img{height:235px}
+ .category-section .section-title,.agency-section .section-title{text-align:left}
+ .category-section .section-title p{margin-left:0}
+ .demo-grid,.theme-grid{grid-template-columns:1fr}
+ .stats{font-size:.53rem;gap:18px}
+ .stats b{font-size:1.1rem}
+ .order-shell{border-radius:20px}
+ .order-main{padding:23px 16px}
+ .formStep h4{font-size:1.4rem}
+ .confirmCard{padding:32px 18px 22px}
+ .confirmActions .primary{min-width:0;width:100%}
+}
+@media(prefers-reduced-motion:reduce){
+ .category-card,.category-card img,.demo-card,.step,.contact-item,.btn{transition:none!important}
+ .category-card:hover,.category-card:hover img,.demo-card:hover,.step:hover,.contact-item:hover,.btn:hover{transform:none}
+}
 </style>
 </head>
 <body>
-<header><div class="logo">special<span>pages</span>.in</div><nav><a href="#categories">Categories</a><a href="#demos" onclick="event.preventDefault();document.getElementById('demos').scrollIntoView({behavior:'smooth',block:'start'});">Demos</a><a href="#how">How it works</a><a href="#pricing">Price</a><a href="#track">Track order</a><a href="#contact-section">Contact</a><a href="#create">Create yours</a></nav></header>
+<header class="site-header"><a class="logo" href="#" aria-label="SpecialPages home">special<span>pages</span>.in</a><button class="mobile-menu-toggle" id="mobileMenuToggle" type="button" aria-expanded="false" aria-controls="siteNav" aria-label="Open navigation">☰</button><nav id="siteNav"><a href="#categories">Categories</a><a href="#demos">Demos</a><a href="#how">How it works</a><a href="#pricing">Pricing</a><a href="#track">Track order</a><a href="#contact-section">Contact</a><a href="#create">Start a project ↗</a></nav></header>
 
 <section class="hero"><div class="wrap">
 <div class="kicker">specialpages · thoughtful digital experiences</div>
@@ -853,6 +942,17 @@ updateProjectCategory();
 updatePreview();
 </script>
 
+<script>
+(function(){
+ const toggle=document.getElementById('mobileMenuToggle');
+ const nav=document.getElementById('siteNav');
+ if(toggle&&nav){
+  toggle.addEventListener('click',()=>{const open=nav.classList.toggle('open');toggle.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-label',open?'Close navigation':'Open navigation');toggle.textContent=open?'×':'☰';});
+  nav.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{nav.classList.remove('open');toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Open navigation');toggle.textContent='☰';}));
+  document.addEventListener('keydown',e=>{if(e.key==='Escape'){nav.classList.remove('open');toggle.setAttribute('aria-expanded','false');toggle.textContent='☰';}});
+ }
+})();
+</script>
 <script>
 (function(){
   const revealItems=document.querySelectorAll('section,.price-card,.track-card,.privacy-box,.step,.mock');
