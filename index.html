@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>specialpages.in — Digital Surprises, Made Personal</title>
+<title>SpecialPages.in — Beautiful Websites for Every Idea</title>
 <style>@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,400;1,500&display=swap');
 :root{
  --bg:#08070b;--surface:#100d17;--surface2:#151020;--line:#ffffff12;
@@ -293,7 +293,8 @@ textarea#message{min-height:180px}.char-count{text-align:right;color:#5f5865;fon
 .process-list b{font:italic 1.6rem 'Playfair Display',Georgia,serif;color:var(--agency-accent)}
 .process-list strong,.process-list small{display:block}.process-list small{margin-top:7px;color:var(--agency-muted);line-height:1.5}
 @media(max-width:900px){.category-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.agency-layout{grid-template-columns:1fr}}
-@media(max-width:600px){.category-section,.agency-section{padding:70px 5%}.category-grid{grid-template-columns:1fr}.category-card img{height:230px}}
+@media(max-width:600px){.category-section,.agency-section{padding:70px 5%}.category-grid{grid-template-columns:1fr} .category-card img{height:230px}}
+.project-category{width:100%;background:#100d17;color:#f8f4fa;border:1px solid #ffffff24;border-radius:12px;padding:14px 15px;font:inherit;outline:none}.project-category:focus{border-color:#a78bfa}.category-help{display:block;color:#a59ba9;font-size:.78rem;line-height:1.5;margin-top:8px}.category-card.active-category{border-color:#a78bfa;box-shadow:0 0 0 1px #a78bfa40}
 @media(prefers-reduced-motion:reduce){.category-card{transition:none}.category-card:hover{transform:none}}
 </style>
 </head>
@@ -428,16 +429,17 @@ textarea#message{min-height:180px}.char-count{text-align:right;color:#5f5865;fon
           <p class="step-desc">We'll use these details only to discuss your order and deliver the finished page.</p>
           <div class="field"><label>Your name *</label><input id="customerName" placeholder="e.g. Tauqeer"></div>
           <div class="field"><label>WhatsApp / contact *</label><input id="contact" type="tel" placeholder="Your WhatsApp number"></div>
+          <div class="field"><label>What kind of website do you need? *</label><select id="projectCategory" class="project-category"><option value="Romantic & Memories">Romantic & Memory Websites</option><option value="Business Website">Business Website</option><option value="Restaurant & Cafe">Restaurant &amp; Café</option><option value="Brand & E-commerce">Brand &amp; E-commerce</option><option value="Personal Portfolio">Personal Website / Portfolio</option><option value="Event & Celebration">Event &amp; Celebration</option></select><small class="category-help">Choose a category. You can share your exact requirements in the next steps.</small></div>
           <div class="micro-note">💬 We'll contact you here about your SpecialPage.</div>
         </div>
 
         <div class="formStep" data-step="2" style="display:none">
           <div class="big-step">02 <span>About them</span></div>
-          <h4>Who is this little world for?</h4>
-          <p class="step-desc">Give us the basics. We'll handle the magic.</p>
+          <h4 id="projectStepHeading">Who is this website for?</h4>
+          <p class="step-desc" id="projectStepDescription">Choose a style and tell us a little about the person or project.</p>
 
           <div class="field">
-            <label>Choose a website style *</label>
+            <label id="themeLabel">Choose a website style *</label>
             <div class="theme-grid" id="themeGrid">
               <div class="theme-card" data-theme="Birthday">
                 <span class="theme-check">✓</span>
@@ -476,11 +478,11 @@ textarea#message{min-height:180px}.char-count{text-align:right;color:#5f5865;fon
               </div>
             </div>
             <input type="hidden" id="selectedTheme" value="Fuzzy Octo">
-            <div class="theme-choice-note">Pick the style you want us to use as the direction for your SpecialPage. We'll customize the final design around your story.</div>
+            <div class="theme-choice-note" id="themeChoiceNote">Pick the style you want us to use as the direction for your SpecialPage. We'll customize the final design around your story.</div><div class="theme-choice-note" id="customThemeNote" style="display:none">Your category is selected. We’ll discuss the visual style, pages and features with you before starting.</div>
           </div>
 
-          <div class="field"><label>Their name *</label><input id="name" placeholder="e.g. Ananya"></div>
-          <div class="field"><label>What are you celebrating? *</label>
+          <div class="field"><label id="recipientLabel">Person or business name *</label><input id="name" placeholder="e.g. Ananya or your business name"></div>
+          <div class="field"><label id="occasionLabel">What are you celebrating? *</label>
             <div class="occasion-grid">
               <button type="button" class="occasion-choice selected" data-value="Birthday">🎂<span>Birthday</span></button>
               <button type="button" class="occasion-choice" data-value="Anniversary">❤️<span>Anniversary</span></button>
@@ -499,8 +501,8 @@ textarea#message{min-height:180px}.char-count{text-align:right;color:#5f5865;fon
           <div class="big-step">03 <span>Your words</span></div>
           <h4>Say what you really mean.</h4>
           <p class="step-desc">Don't worry about making it perfect. We'll turn your words into something beautiful.</p>
-          <div class="field"><label>Message for them *</label><textarea id="message" placeholder="Start writing here..."></textarea><div class="char-count"><span id="messageCount">0</span> characters</div></div>
-          <div class="field"><label>Anything special? <span class="optional">optional</span></label><textarea id="request" placeholder="A favourite memory, an inside joke, a surprise idea..."></textarea></div>
+          <div class="field"><label id="messageLabel">Message or project brief *</label><textarea id="message" placeholder="Tell us what you want the website to say or do..."></textarea><div class="char-count"><span id="messageCount">0</span> characters</div></div>
+          <div class="field"><label id="requestLabel">Anything else we should know? <span class="optional">optional</span></label><textarea id="request" placeholder="Features, pages, style references, special ideas..."></textarea></div>
         </div>
 
         <div class="formStep" data-step="4" style="display:none">
@@ -512,7 +514,7 @@ textarea#message{min-height:180px}.char-count{text-align:right;color:#5f5865;fon
           <div class="media-upload"><div class="media-icon">▶</div><div><b>Videos</b><small>Personal clips · optional</small></div><input id="videos" type="file" accept="video/*" multiple></div>
           <div class="media-upload"><div class="media-icon">♪</div><div><b>Songs / audio</b><small>Your own audio · optional</small></div><input id="audio" type="file" accept="audio/*" multiple></div>
 
-          <div class="couponBox"><div class="field" style="margin:0"><label>Discount code</label><div class="couponRow"><input id="couponCode" placeholder="Enter code" maxlength="30" autocomplete="off"><button class="btn" id="applyCoupon" type="button">Apply</button></div><div id="couponMsg" class="couponMsg"></div></div><div class="priceSummary"><span>Original price</span><b>₹199</b></div><div class="priceSummary discountLine" id="discountLine"><span>Discount</span><b id="discountValue">−₹0</b></div><div class="priceSummary finalPrice"><span>You pay</span><b id="finalPrice">₹159</b></div></div>
+          <div class="couponBox" id="couponBox"><div class="field" style="margin:0"><label>Discount code</label><div class="couponRow"><input id="couponCode" placeholder="Enter code" maxlength="30" autocomplete="off"><button class="btn" id="applyCoupon" type="button">Apply</button></div><div id="couponMsg" class="couponMsg"></div></div><div class="priceSummary"><span>Original price</span><b id="originalPrice">₹199</b></div><div class="priceSummary discountLine" id="discountLine"><span>Discount</span><b id="discountValue">−₹0</b></div><div class="priceSummary finalPrice"><span id="priceCaption">You pay</span><b id="finalPrice">₹159</b></div><p class="category-help" id="priceNote">Romantic &amp; memory website: ₹159 one-time. Other website categories receive a custom quote before work begins.</p></div>
         </div>
 
         <div class="formNav">
@@ -639,15 +641,42 @@ const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_oGZ6x_40l70-4TV53FIq1A_mq2uvPCb
 const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $=id=>document.getElementById(id);
 
+function isMemoryProject(){return $('projectCategory').value==='Romantic & Memories';}
+function updateProjectCategory(){
+ const cat=$('projectCategory').value, memory=isMemoryProject();
+ $('themeGrid').style.display=memory?'grid':'none';
+ $('themeLabel').style.display=memory?'block':'none';
+ $('themeChoiceNote').style.display=memory?'block':'none';
+ $('customThemeNote').style.display=memory?'none':'block';
+ if(!memory){$('selectedTheme').value='Custom website design';document.querySelectorAll('.theme-card').forEach(c=>c.classList.remove('selected'));}
+ else if($('selectedTheme').value==='Custom website design'){$('selectedTheme').value='Fuzzy Octo';document.querySelectorAll('.theme-card').forEach(c=>c.classList.toggle('selected',c.dataset.theme==='Fuzzy Octo'));}
+ $('projectStepHeading').textContent=memory?'Who is this little world for?':'Tell us about your project';
+ $('projectStepDescription').textContent=memory?'Give us the basics. We’ll handle the magic.':'Describe your business, brand, portfolio or event website.';
+ $('recipientLabel').textContent=memory?'Person or business name *':cat==='Restaurant & Cafe'?'Restaurant / café name *':cat==='Event & Celebration'?'Event name *':cat==='Personal Portfolio'?'Your name / portfolio title *':'Business / project name *';
+ $('name').placeholder=memory?'e.g. Ananya or your business name':cat==='Restaurant & Cafe'?'e.g. The Green Table':cat==='Event & Celebration'?'e.g. Ayesha & Omar’s wedding':cat==='Personal Portfolio'?'e.g. Your name':'e.g. Your business or brand name';
+ $('occasionLabel').textContent=memory?'What are you celebrating? *':'What should this website help you do? *';
+ document.querySelector('.occasion-grid').style.display=memory?'grid':'none';
+ const occasion=$('occasion');
+ if(memory){occasion.innerHTML='<option>Birthday</option><option>Anniversary</option><option>Proposal</option><option>Just because</option><option>Other special moment</option>';if(!['Birthday','Anniversary','Proposal','Just because','Other special moment'].includes(occasion.value))occasion.value='Birthday';}
+ else {occasion.innerHTML='<option>Get more enquiries</option><option>Showcase services or products</option><option>Take bookings or reservations</option><option>Sell products online</option><option>Share information / invitations</option><option>Other project goal</option>';}
+ $('messageLabel').textContent=memory?'Message for them *':'Project brief *';
+ $('message').placeholder=memory?'Write your message here...':'Tell us what you need, who the website is for, and any pages or features you have in mind...';
+ $('requestLabel').innerHTML=memory?'Anything special? <span class="optional">optional</span>':'References, features or extra details <span class="optional">optional</span>';
+ $('request').placeholder=memory?'A favourite memory, an inside joke, a surprise idea...':'Add example websites, preferred colours, pages, booking, menu, shop or other requirements...';
+ $('couponBox').style.display=memory?'block':'none';
+ $('priceCaption').textContent=memory?'You pay':'Estimated price';
+ $('originalPrice').textContent=memory?'₹199':'Custom quote';
+ $('priceNote').textContent=memory?'Romantic & memory website: ₹159 one-time. Other website categories receive a custom quote before work begins.':'No fixed price is shown for this category. We’ll review your requirements and confirm the quote before work starts.';
+ if(!memory){appliedCoupon=null;discountAmount=0;finalAmount=0;}else{finalAmount=BASE_PRICE-discountAmount;}
+ updateCouponDisplay();updatePreview();
+}
 function updatePreview(){
-  const name=$('name').value.trim();
-  const occasion=$('occasion').value;
-  const message=$('message').value.trim();
+  const name=$('name').value.trim(), occasion=$('occasion').value, message=$('message').value.trim();
   const theme=$('selectedTheme') ? $('selectedTheme').value : 'Fuzzy Octo';
-  $('pOccasion').textContent=occasion ? occasion.toLowerCase() : 'your special moment';
-  if($('pTheme')) $('pTheme').textContent=theme+' style';
-  $('previewGreeting').textContent=name ? 'For '+name : 'A SpecialPage';
-  $('pMessage').textContent=message || 'Your message will appear here as you build the page.';
+  $('pOccasion').textContent=isMemoryProject()?(occasion?occasion.toLowerCase():'your special moment'):$('projectCategory').value;
+  if($('pTheme')) $('pTheme').textContent=theme==='Custom website design'?'custom design direction':theme+' style';
+  $('previewGreeting').textContent=name?(isMemoryProject()?'For '+name:name):(isMemoryProject()?'A SpecialPage':'Your website');
+  $('pMessage').textContent=message || (isMemoryProject()?'Your message will appear here as you build the page.':'Your project brief will appear here as you build your request.');
 }
 ['name','occasion','message'].forEach(id=>$(id).addEventListener('input',updatePreview));
 
@@ -693,11 +722,11 @@ function validateStep(n){
     return false;
   }
   if(n===2 && !$('name').value.trim()){
-    $('submitStatus').textContent="Please enter their name.";
+    $('submitStatus').textContent=isMemoryProject()?'Please enter their name.':'Please enter the business, project or event name.';
     return false;
   }
   if(n===3 && !$('message').value.trim()){
-    $('submitStatus').textContent="Tell us a little about what you'd like to say.";
+    $('submitStatus').textContent=isMemoryProject()?"Tell us a little about what you'd like to say.":"Please describe the website you need.";
     return false;
   }
   $('submitStatus').textContent='';
@@ -730,6 +759,12 @@ $('applyCoupon').addEventListener('click',()=>{
  appliedCoupon=code;discountAmount=Math.round(BASE_PRICE*coupon.percent/100);finalAmount=BASE_PRICE-discountAmount;
  msg.className='couponMsg ok';msg.textContent=code+' applied — you save ₹'+discountAmount+'.';updateCouponDisplay();
 });
+$('projectCategory').addEventListener('change',updateProjectCategory);
+document.querySelectorAll('.category-card').forEach(card=>card.addEventListener('click',()=>{
+ const title=card.querySelector('h3')?.textContent||'';
+ const map=[['Business Websites','Business Website'],['Restaurants & Cafés','Restaurant & Cafe'],['Brands & E-commerce','Brand & E-commerce'],['Personal Websites','Personal Portfolio'],['Events & Celebrations','Event & Celebration'],['Romantic & Memories','Romantic & Memories']];
+ const match=map.find(([label])=>title.includes(label));if(match){$('projectCategory').value=match[1];updateProjectCategory();}
+}));
 $('submitBtn').addEventListener('click',async()=>{
   const status=$('submitStatus'),submit=$('submitBtn');
   if(!validateStep(4))return;
@@ -742,14 +777,14 @@ $('submitBtn').addEventListener('click',async()=>{
       customer_name:$('customerName').value.trim(),
       contact:$('contact').value.trim(),
       recipient_name:$('name').value.trim(),
-      occasion:$('occasion').value,
+      occasion:isMemoryProject() ? $('occasion').value : $('projectCategory').value,
       occasion_date:$('occasionDate').value||null,
       message:$('message').value.trim(),
-      special_request:$('request').value.trim() + ' | Website style: ' + $('selectedTheme').value,
-      coupon_code:appliedCoupon,
-      original_amount:199,
-      discount_amount:discountAmount,
-      final_amount:finalAmount,
+      special_request:'Project category: '+$('projectCategory').value+' | Website style: '+$('selectedTheme').value+' | Extra details: '+$('request').value.trim()+(isMemoryProject()?'':' | CUSTOM QUOTE REQUIRED — confirm scope and price before work starts'),
+      coupon_code:isMemoryProject()?appliedCoupon:null,
+      original_amount:isMemoryProject()?199:0,
+      discount_amount:isMemoryProject()?discountAmount:0,
+      final_amount:isMemoryProject()?finalAmount:0,
       status:'new',
       order_status:'new',
       payment_status:'unpaid'
@@ -763,7 +798,7 @@ $('submitBtn').addEventListener('click',async()=>{
 
     const shortId=orderId.slice(0,8).toUpperCase();
     const themeName=$('selectedTheme').value;
-    const waText='Hi SpecialPages! ❤️ I just submitted a SpecialPage request.\nOrder ID: '+shortId+'\nWebsite style: '+themeName+'\nFor: '+$('name').value.trim()+'\nAmount: ₹'+finalAmount;
+    const waText='Hi SpecialPages! I just submitted a website request.\nOrder ID: '+shortId+'\nCategory: '+$('projectCategory').value+'\nWebsite style: '+themeName+'\nProject / recipient: '+$('name').value.trim()+'\n'+(isMemoryProject()?'Amount: ₹'+finalAmount:'Please review my brief and share the custom quote before work starts.');
     const waLink='https://wa.me/919103672989?text='+encodeURIComponent(waText);
     $('confirmOrderId').textContent=shortId;
     $('confirmWhatsApp').href=waLink;
@@ -817,6 +852,7 @@ if(whatsappPay){
   whatsappPay.href='https://wa.me/919103672989?text='+encodeURIComponent('Hi SpecialPages! ❤️ I want to order a SpecialPage. Please send me the payment details.');
 }
 showStep(1);
+updateProjectCategory();
 updatePreview();
 </script>
 
